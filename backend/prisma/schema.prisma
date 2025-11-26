@@ -40,7 +40,6 @@ model Todo {
   content     String?
   startDate   DateTime?
   dueDate     DateTime?
-  status      TodoStatus @default(ACTIVE)
   isCompleted Boolean    @default(false)
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
@@ -50,7 +49,7 @@ model Todo {
   user User @relation(fields: [userId], references: [userId], onDelete: Cascade)
 
   // Indexes
-  @@index([userId, status])
+  @@index([userId, isCompleted])
   @@index([dueDate])
   @@index([deletedAt])
   @@map("todos")
@@ -83,13 +82,4 @@ enum Role {
   ADMIN // 관리자 (국경일 관리 권한)
 
   @@map("role")
-}
-
-// 할일 상태
-enum TodoStatus {
-  ACTIVE // 활성 (진행 중)
-  COMPLETED // 완료됨
-  DELETED // 삭제됨 (휴지통)
-
-  @@map("todo_status")
 }
