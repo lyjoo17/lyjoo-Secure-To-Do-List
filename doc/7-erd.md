@@ -94,7 +94,7 @@ lyjoo-secure-to-do-list 시스템은 3개의 핵심 엔티티로 구성됩니다
 | `email` | VARCHAR(255) | UNIQUE, NOT NULL | - | 로그인 이메일 주소 |
 | `password` | VARCHAR(255) | NOT NULL | - | bcrypt 해시된 비밀번호 (salt rounds: 10) |
 | `username` | VARCHAR(100) | NOT NULL | - | 사용자 표시 이름 |
-| `role` | ENUM('user', 'admin') | NOT NULL | 'user' | 사용자 권한 레벨 |
+| `role` | ENUM('USER', 'ADMIN') | NOT NULL | 'USER' | 사용자 권한 레벨 |
 | `createdAt` | TIMESTAMP | NOT NULL | now() | 계정 생성일시 |
 | `updatedAt` | TIMESTAMP | NOT NULL | now() | 최종 정보 수정일시 (자동 갱신) |
 
@@ -103,7 +103,7 @@ lyjoo-secure-to-do-list 시스템은 3개의 핵심 엔티티로 구성됩니다
 - [BR-02] 사용자는 자신의 데이터만 조회/수정 가능
 - 이메일은 계정의 유일한 식별자로 중복 불가
 - 비밀번호는 평문 저장 불가 (bcrypt 해싱 필수)
-- role='admin' 사용자만 국경일 관리 가능
+- role='ADMIN' 사용자만 국경일 관리 가능
 
 ---
 
@@ -119,7 +119,7 @@ lyjoo-secure-to-do-list 시스템은 3개의 핵심 엔티티로 구성됩니다
 | `content` | TEXT | NULL | null | 할일 상세 설명 (선택) |
 | `startDate` | DATE | NULL | null | 할일 시작일 (선택) |
 | `dueDate` | DATE | NULL, CHECK(dueDate >= startDate) | null | 할일 만료일 (선택, 시작일 이후) |
-| `status` | ENUM('active', 'completed', 'deleted') | NOT NULL | 'active' | 할일 상태 |
+| `status` | ENUM('ACTIVE', 'COMPLETED', 'DELETED') | NOT NULL | 'ACTIVE' | 할일 상태 |
 | `isCompleted` | BOOLEAN | NOT NULL | false | 완료 여부 플래그 |
 | `createdAt` | TIMESTAMP | NOT NULL | now() | 할일 생성일시 |
 | `updatedAt` | TIMESTAMP | NOT NULL | now() | 최종 수정일시 (자동 갱신) |
@@ -133,10 +133,10 @@ lyjoo-secure-to-do-list 시스템은 3개의 핵심 엔티티로 구성됩니다
 - `dueDate >= startDate`: 만료일은 시작일보다 이전일 수 없음
 
 **비즈니스 규칙**:
-- [BR-05] 할일 삭제 시 DB에서 제거하지 않고 status='deleted', deletedAt 기록
+- [BR-05] 할일 삭제 시 DB에서 제거하지 않고 status='DELETED', deletedAt 기록
 - [BR-06] 휴지통의 할일은 복원 가능
 - [BR-07] 영구 삭제 시에만 DB에서 완전 제거
-- [BR-08] 할일 완료 시 isCompleted=true, status='completed' 동시 설정
+- [BR-08] 할일 완료 시 isCompleted=true, status='COMPLETED' 동시 설정
 - [BR-12] 만료일은 시작일과 같거나 이후여야 함
 - [BR-13] 만료일 지난 할일은 UI에서 시각적으로 구분 표시
 
@@ -903,6 +903,7 @@ const [deletedTodo, logEntry] = await prisma.$transaction([
 | 버전 | 날짜 | 변경 내용 | 작성자 |
 |------|------|----------|--------|
 | 1.0 | 2025-11-26 | ERD 문서 초안 작성 | Claude |
+| 1.1 | 2025-11-26 | DB 스키마 동기화 (Enum 대문자 변경, CHECK 제약조건 확인) | Gemini |
 
 ---
 
