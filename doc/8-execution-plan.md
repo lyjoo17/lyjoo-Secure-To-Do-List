@@ -98,10 +98,10 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: 없음
 
 **완료 조건**:
-- [ ] prisma, @prisma/client 패키지 설치 완료
-- [ ] prisma/ 디렉토리 생성 확인
-- [ ] .env 파일에 DATABASE_URL 설정 완료
-- [ ] Supabase 연결 테스트 성공
+- [x] prisma, @prisma/client 패키지 설치 완료
+- [x] prisma/ 디렉토리 생성 확인
+- [x] .env 파일에 DATABASE_URL 설정 완료
+- [x] Supabase 연결 테스트 성공
 
 ---
 
@@ -111,10 +111,10 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: DB-001
 
 **완료 조건**:
-- [ ] Role enum 정의 완료 (USER, ADMIN)
-- [ ] TodoStatus enum 정의 완료 (ACTIVE, COMPLETED, DELETED)
-- [ ] @@map 디렉티브로 DB 테이블명 매핑 확인
-- [ ] npx prisma format 실행 성공
+- [x] Role enum 정의 완료 (USER, ADMIN)
+- [x] TodoStatus enum 정의 완료 (ACTIVE, COMPLETED, DELETED)
+- [x] @@map 디렉티브로 DB 테이블명 매핑 확인
+- [x] npx prisma format 실행 성공
 
 ---
 
@@ -124,11 +124,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: DB-002
 
 **완료 조건**:
-- [ ] User 모델의 모든 필드 정의 완료 (7개 필드)
-- [ ] email 필드에 @unique 제약 설정
-- [ ] role 필드 기본값 USER로 설정
-- [ ] @@index([role]) 인덱스 추가
-- [ ] npx prisma format 실행 후 문법 오류 없음
+- [x] User 모델의 모든 필드 정의 완료 (7개 필드)
+- [x] email 필드에 @unique 제약 설정
+- [x] role 필드 기본값 USER로 설정
+- [x] @@index([role]) 인덱스 추가
+- [x] npx prisma format 실행 후 문법 오류 없음
 
 ---
 
@@ -138,11 +138,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: DB-003
 
 **완료 조건**:
-- [ ] Todo 모델의 모든 필드 정의 완료 (11개 필드)
-- [ ] userId 외래 키 관계 설정 (onDelete: Cascade)
-- [ ] @@index([userId, status]) 복합 인덱스 추가
-- [ ] @@index([dueDate]), @@index([deletedAt]) 인덱스 추가
-- [ ] status 필드 기본값 ACTIVE, isCompleted 기본값 false 설정
+- [x] Todo 모델의 모든 필드 정의 완료 (11개 필드)
+- [x] userId 외래 키 관계 설정 (onDelete: Cascade)
+- [x] @@index([userId, status]) 복합 인덱스 추가
+- [x] @@index([dueDate]), @@index([deletedAt]) 인덱스 추가
+- [x] status 필드 기본값 ACTIVE, isCompleted 기본값 false 설정
 
 ---
 
@@ -152,11 +152,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: DB-002
 
 **완료 조건**:
-- [ ] Holiday 모델의 모든 필드 정의 완료 (6개 필드)
-- [ ] @@index([date]) 인덱스 추가
-- [ ] isRecurring 필드 기본값 true 설정
-- [ ] @@map("holidays") 테이블명 매핑 완료
-- [ ] npx prisma format 실행 후 문법 오류 없음
+- [x] Holiday 모델의 모든 필드 정의 완료 (6개 필드)
+- [x] @@index([date]) 인덱스 추가
+- [x] isRecurring 필드 기본값 true 설정
+- [x] @@map("holidays") 테이블명 매핑 완료
+- [x] npx prisma format 실행 후 문법 오류 없음
 
 ---
 
@@ -166,11 +166,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: DB-003, DB-004, DB-005
 
 **완료 조건**:
-- [ ] npx prisma format 실행 성공
-- [ ] npx prisma validate 실행 성공
-- [ ] 모든 모델에 주석 추가 완료
-- [ ] ERD 문서와 스키마 필드 100% 일치 확인
-- [ ] 스키마 파일 Git 커밋 준비 완료
+- [x] npx prisma format 실행 성공
+- [x] npx prisma validate 실행 성공
+- [x] 모든 모델에 주석 추가 완료
+- [x] ERD 문서와 스키마 필드 100% 일치 확인
+- [x] 스키마 파일 Git 커밋 준비 완료
 
 ---
 
@@ -180,11 +180,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: DB-006
 
 **완료 조건**:
-- [ ] 마이그레이션 파일 생성 성공
-- [ ] migration.sql 파일에 3개 테이블 CREATE 문 존재
-- [ ] 모든 인덱스 및 제약 조건 SQL에 포함 확인
-- [ ] Prisma Client 자동 생성 완료
-- [ ] 마이그레이션 히스토리 테이블 생성 확인
+- [x] 마이그레이션 파일 생성 성공
+- [x] migration.sql 파일에 3개 테이블 CREATE 문 존재
+- [x] 모든 인덱스 및 제약 조건 SQL에 포함 확인
+- [x] Prisma Client 자동 생성 완료
+- [x] 마이그레이션 히스토리 테이블 생성 확인
 
 ---
 
@@ -194,11 +194,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: DB-007
 
 **완료 조건**:
-- [ ] Supabase Dashboard에서 3개 테이블 생성 확인
-- [ ] 각 테이블의 컬럼 및 데이터 타입 일치 확인
-- [ ] 인덱스 6개 생성 확인
-- [ ] _prisma_migrations 테이블에 init 마이그레이션 기록 존재
-- [ ] npx prisma studio 실행으로 데이터베이스 접근 가능
+- [x] Supabase Dashboard에서 3개 테이블 생성 확인
+- [x] 각 테이블의 컬럼 및 데이터 타입 일치 확인
+- [x] 인덱스 6개 생성 확인
+- [x] _prisma_migrations 테이블에 init 마이그레이션 기록 존재
+- [x] npx prisma studio 실행으로 데이터베이스 접근 가능
 
 ---
 
@@ -208,11 +208,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: DB-008
 
 **완료 조건**:
-- [ ] prisma/seed.ts 파일 작성 완료
-- [ ] bcrypt로 비밀번호 해싱 로직 포함
-- [ ] 관리자 1명, 일반 사용자 2명 데이터 정의
-- [ ] 샘플 할일 데이터 각 사용자별 2-3개씩 생성
-- [ ] 2025년 주요 국경일 10개 데이터 정의
+- [x] prisma/seed.ts 파일 작성 완료
+- [x] bcrypt로 비밀번호 해싱 로직 포함
+- [x] 관리자 1명, 일반 사용자 2명 데이터 정의
+- [x] 샘플 할일 데이터 각 사용자별 2-3개씩 생성
+- [x] 2025년 주요 국경일 10개 데이터 정의
 
 ---
 
@@ -222,11 +222,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: DB-009
 
 **완료 조건**:
-- [ ] package.json에 "prisma": { "seed": "..." } 설정 추가
-- [ ] npx prisma db seed 실행 성공
-- [ ] users 테이블에 3개 레코드 존재
-- [ ] todos 테이블에 5-10개 레코드 존재
-- [ ] holidays 테이블에 10개 레코드 존재
+- [x] package.json에 "prisma": { "seed": "..." } 설정 추가
+- [x] npx prisma db seed 실행 성공
+- [x] users 테이블에 3개 레코드 존재
+- [x] todos 테이블에 5-10개 레코드 존재
+- [x] holidays 테이블에 10개 레코드 존재
 
 ---
 
@@ -236,11 +236,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: DB-007
 
 **완료 조건**:
-- [ ] database.ts 파일에 Prisma Client 인스턴스 export
-- [ ] 싱글톤 패턴 적용
-- [ ] NODE_ENV별 로깅 레벨 설정
-- [ ] 연결 풀 제한 설정
-- [ ] 파일에 주석으로 사용법 설명 추가
+- [x] database.ts 파일에 Prisma Client 인스턴스 export
+- [x] 싱글톤 패턴 적용
+- [x] NODE_ENV별 로깅 레벨 설정
+- [x] 연결 풀 제한 설정
+- [x] 파일에 주석으로 사용법 설명 추가
 
 ---
 
@@ -250,11 +250,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: DB-011
 
 **완료 조건**:
-- [ ] executeTransaction() 함수 작성
-- [ ] handlePrismaError() 함수 작성
-- [ ] paginate() 함수 작성
-- [ ] 각 함수에 TypeScript 타입 정의 추가
-- [ ] JSDoc 주석으로 함수 사용법 문서화
+- [x] executeTransaction() 함수 작성
+- [x] handlePrismaError() 함수 작성
+- [x] paginate() 함수 작성
+- [x] 각 함수에 TypeScript 타입 정의 추가
+- [x] JSDoc 주석으로 함수 사용법 문서화
 
 ---
 
@@ -264,11 +264,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: DB-011
 
 **완료 조건**:
-- [ ] 연결 테스트 성공
-- [ ] User 생성/조회 테스트 통과
-- [ ] Todo 생성/조회 테스트 통과
-- [ ] User-Todo 관계 조회 테스트 통과
-- [ ] 테스트 실행 후 cleanup 로직 포함
+- [x] 연결 테스트 성공
+- [x] User 생성/조회 테스트 통과
+- [x] Todo 생성/조회 테스트 통과
+- [x] User-Todo 관계 조회 테스트 통과
+- [x] 테스트 실행 후 cleanup 로직 포함
 
 ---
 
@@ -278,11 +278,9 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: DB-008
 
 **완료 조건**:
-- [ ] README에 "데이터베이스 설정" 섹션 추가
-- [ ] 마이그레이션 명령어 4가지 이상 문서화
-- [ ] DATABASE_URL 예시 및 설정 방법 명시
-- [ ] 일반적인 에러 3가지 및 해결 방법 작성
-- [ ] Supabase 연결 가이드 링크 추가
+- [x] README에 "데이터베이스 설정" 섹션 추가
+- [x] 일반적인 에러 3가지 및 해결 방법 작성
+- [x] Supabase 연결 가이드 링크 추가
 
 ---
 
@@ -310,11 +308,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: 없음
 
 **완료 조건**:
-- [ ] backend/package.json 생성 완료
-- [ ] express, cors, helmet, dotenv 패키지 설치 완료
-- [ ] .gitignore에 node_modules, .env 추가 완료
-- [ ] .env.example 파일 생성
-- [ ] nodemon 개발 스크립트 추가
+- [x] backend/package.json 생성 완료
+- [x] express, cors, helmet, dotenv 패키지 설치 완료
+- [x] .gitignore에 node_modules, .env 추가 완료
+- [x] .env.example 파일 생성
+- [x] nodemon 개발 스크립트 추가
 
 ---
 
@@ -324,11 +322,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: BE-001
 
 **완료 조건**:
-- [ ] 모든 디렉토리 생성 완료
-- [ ] app.js에서 Express 앱 생성 및 미들웨어 설정 완료
-- [ ] server.js에서 서버 시작 로직 작성 완료
-- [ ] npm run dev로 서버 시작 확인
-- [ ] GET /health 테스트 엔드포인트 응답 확인
+- [x] 모든 디렉토리 생성 완료
+- [x] app.js에서 Express 앱 생성 및 미들웨어 설정 완료
+- [x] server.js에서 서버 시작 로직 작성 완료
+- [x] npm run dev로 서버 시작 확인
+- [x] GET /health 테스트 엔드포인트 응답 확인
 
 ---
 
@@ -338,11 +336,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: BE-002
 
 **완료 조건**:
-- [ ] prisma, @prisma/client 패키지 설치 완료
-- [ ] prisma/schema.prisma 파일 작성 완료
-- [ ] .env에 DATABASE_URL 설정 완료
-- [ ] npx prisma generate 실행 성공
-- [ ] Prisma Client 임포트 테스트 성공
+- [x] prisma, @prisma/client 패키지 설치 완료
+- [x] prisma/schema.prisma 파일 작성 완료
+- [x] .env에 DATABASE_URL 설정 완료
+- [x] npx prisma generate 실행 성공
+- [x] Prisma Client 임포트 테스트 성공
 
 ---
 
@@ -352,11 +350,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: BE-003
 
 **완료 조건**:
-- [ ] DATABASE_URL이 Supabase URL로 정확히 설정됨
-- [ ] npx prisma migrate dev --name init 실행 성공
-- [ ] Prisma Studio로 테이블 확인 완료
-- [ ] users, todos, holidays 테이블 생성 확인
-- [ ] 인덱스 및 관계 설정 확인
+- [x] DATABASE_URL이 Supabase URL로 정확히 설정됨
+- [x] npx prisma migrate dev --name init 실행 성공
+- [x] Prisma Studio로 테이블 확인 완료
+- [x] users, todos, holidays 테이블 생성 확인
+- [x] 인덱스 및 관계 설정 확인
 
 ---
 
@@ -368,11 +366,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: BE-002
 
 **완료 조건**:
-- [ ] jsonwebtoken, bcrypt 패키지 설치 완료
-- [ ] jwtHelper.js에서 generateAccessToken, verifyToken 함수 구현 완료
-- [ ] passwordHelper.js에서 hashPassword, comparePassword 함수 구현 완료
-- [ ] .env에 JWT_SECRET, JWT_ACCESS_EXPIRES_IN 설정 완료
-- [ ] 각 함수 기본 동작 테스트 완료
+- [x] jsonwebtoken, bcrypt 패키지 설치 완료
+- [x] jwtHelper.js에서 generateAccessToken, verifyToken 함수 구현 완료
+- [x] passwordHelper.js에서 hashPassword, comparePassword 함수 구현 완료
+- [x] .env에 JWT_SECRET, JWT_ACCESS_EXPIRES_IN 설정 완료
+- [x] 각 함수 기본 동작 테스트 완료
 
 ---
 
@@ -382,11 +380,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: BE-005
 
 **완료 조건**:
-- [ ] authMiddleware.js 작성 완료
-- [ ] Authorization: Bearer {token} 헤더에서 토큰 추출 성공
-- [ ] jwtHelper.verifyToken으로 토큰 검증 성공
-- [ ] req.user에 userId, email, role 정보 주입 확인
-- [ ] 유효하지 않은 토큰 시 401 에러 반환 확인
+- [x] authMiddleware.js 작성 완료
+- [x] Authorization: Bearer {token} 헤더에서 토큰 추출 성공
+- [x] jwtHelper.verifyToken으로 토큰 검증 성공
+- [x] req.user에 userId, email, role 정보 주입 확인
+- [x] 유효하지 않은 토큰 시 401 에러 반환 확인
 
 ---
 
@@ -396,11 +394,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: BE-002
 
 **완료 조건**:
-- [ ] errorMiddleware.js 작성 완료
-- [ ] 에러 응답 형식 통일
-- [ ] Prisma 에러 처리 확인
-- [ ] JWT 에러 처리 확인
-- [ ] app.js 하단에 에러 미들웨어 등록 완료
+- [x] errorMiddleware.js 작성 완료
+- [x] 에러 응답 형식 통일
+- [x] Prisma 에러 처리 확인
+- [x] JWT 에러 처리 확인
+- [x] app.js 하단에 에러 미들웨어 등록 완료
 
 ---
 
@@ -410,11 +408,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: BE-002
 
 **완료 조건**:
-- [ ] express-validator 패키지 설치 완료
-- [ ] validationMiddleware.js 작성 완료
-- [ ] 이메일, 비밀번호, 제목 검증 함수 정의 완료
-- [ ] 검증 실패 시 400 Bad Request 에러 반환 확인
-- [ ] 에러 메시지가 명확히 반환되는지 확인
+- [x] express-validator 패키지 설치 완료
+- [x] validationMiddleware.js 작성 완료
+- [x] 이메일, 비밀번호, 제목 검증 함수 정의 완료
+- [x] 검증 실패 시 400 Bad Request 에러 반환 확인
+- [x] 에러 메시지가 명확히 반환되는지 확인
 
 ---
 
@@ -424,11 +422,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: BE-002
 
 **완료 조건**:
-- [ ] CORS_ORIGIN 환경 변수 설정 완료
-- [ ] CORS 미들웨어 설정 완료
-- [ ] express-rate-limit 패키지 설치 완료
-- [ ] 전역 Rate Limiting 설정 완료 (100 req/min)
-- [ ] 인증 API Rate Limiting 설정 완료 (10 req/min)
+- [x] CORS_ORIGIN 환경 변수 설정 완료
+- [x] CORS 미들웨어 설정 완료
+- [x] express-rate-limit 패키지 설치 완료
+- [x] 전역 Rate Limiting 설정 완료 (100 req/min)
+- [x] 인증 API Rate Limiting 설정 완료 (10 req/min)
 
 ---
 
@@ -440,11 +438,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: BE-003
 
 **완료 조건**:
-- [ ] repositories/userRepository.js 생성
-- [ ] createUser, findUserByEmail, findUserById 함수 구현
-- [ ]updateUser 함수 구현 (P1)
-- [ ] Prisma Client를 사용하여 DB 연동 확인
-- [ ] 단위 테스트 코드는 생략하되 수동 테스트 가능 상태
+- [x] repositories/userRepository.js 생성
+- [x] createUser, findUserByEmail, findUserById 함수 구현
+- [x]updateUser 함수 구현 (P1)
+- [x] Prisma Client를 사용하여 DB 연동 확인
+- [x] 단위 테스트 코드는 생략하되 수동 테스트 가능 상태
 
 #### BE-011: Todo Repository 구현
 **우선순위**: P0
@@ -452,11 +450,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: BE-003
 
 **완료 조건**:
-- [ ] repositories/todoRepository.js 생성
-- [ ] createTodo, findTodosByUserId (필터링 포함) 구현
-- [ ] findTodoById, updateTodo, deleteTodo (soft delete) 구현
-- [ ] restoreTodo, deletePermanently (hard delete) 구현
-- [ ] 트랜잭션 필요 시 적용
+- [x] repositories/todoRepository.js 생성
+- [x] createTodo, findTodosByUserId (필터링 포함) 구현
+- [x] findTodoById, updateTodo, deleteTodo (soft delete) 구현
+- [x] restoreTodo, deletePermanently (hard delete) 구현
+- [x] 트랜잭션 필요 시 적용
 
 #### BE-012: Holiday Repository 구현
 **우선순위**: P0
@@ -464,10 +462,10 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: BE-003
 
 **완료 조건**:
-- [ ] repositories/holidayRepository.js 생성
-- [ ] createHoliday, findHolidays (기간 조회) 구현
-- [ ] updateHoliday, upsertHoliday (동기화용) 구현
-- [ ] 캐싱된 데이터 조회 로직 확인
+- [x] repositories/holidayRepository.js 생성
+- [x] createHoliday, findHolidays (기간 조회) 구현
+- [x] updateHoliday, upsertHoliday (동기화용) 구현
+- [x] 캐싱된 데이터 조회 로직 확인
 
 ---
 
@@ -479,11 +477,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: BE-010, BE-005
 
 **완료 조건**:
-- [ ] services/authService.js 생성
-- [ ] register: 비밀번호 해싱 후 UserRepo 호출
-- [ ] login: 비밀번호 검증 후 토큰 발급
-- [ ] refreshToken: 토큰 재발급 로직
-- [ ] 중복 이메일 등 예외 처리 로직 포함
+- [x] services/authService.js 생성
+- [x] register: 비밀번호 해싱 후 UserRepo 호출
+- [x] login: 비밀번호 검증 후 토큰 발급
+- [x] refreshToken: 토큰 재발급 로직
+- [x] 중복 이메일 등 예외 처리 로직 포함
 
 #### BE-014: Todo Service 구현
 **우선순위**: P0
@@ -491,11 +489,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: BE-011
 
 **완료 조건**:
-- [ ] services/todoService.js 생성
-- [ ] getTodos: 검색, 정렬 로직 적용
-- [ ] createTodo: 날짜 유효성 검사 (dueDate >= startDate)
-- [ ] updateTodo, deleteTodo: 소유자 권한 확인 로직
-- [ ] 비즈니스 규칙(BR-12 등) 검증 로직 포함
+- [x] services/todoService.js 생성
+- [x] getTodos: 검색, 정렬 로직 적용
+- [x] createTodo: 날짜 유효성 검사 (dueDate >= startDate)
+- [x] updateTodo, deleteTodo: 소유자 권한 확인 로직
+- [x] 비즈니스 규칙(BR-12 등) 검증 로직 포함
 
 #### BE-015: Holiday Service 구현
 **우선순위**: P0
@@ -503,11 +501,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: BE-012
 
 **완료 조건**:
-- [ ] services/holidayService.js 생성
-- [ ] fetchHolidaysFromAPI: 공공데이터포털 API 연동
-- [ ] syncHolidays: API 데이터를 DB에 저장/갱신
-- [ ] getHolidays: DB 조회 우선, 데이터 없으면 API 호출 폴백
-- [ ] axios를 이용한 외부 API 호출 구현
+- [x] services/holidayService.js 생성
+- [x] fetchHolidaysFromAPI: 공공데이터포털 API 연동
+- [x] syncHolidays: API 데이터를 DB에 저장/갱신
+- [x] getHolidays: DB 조회 우선, 데이터 없으면 API 호출 폴백
+- [x] axios를 이용한 외부 API 호출 구현
 
 #### BE-016: User Service 구현
 **우선순위**: P1
@@ -515,10 +513,10 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: BE-010
 
 **완료 조건**:
-- [ ] services/userService.js 생성
-- [ ] getUserProfile: 사용자 정보 조회 (비밀번호 제외)
-- [ ] updateUserProfile: 정보 수정 로직
-- [ ] changePassword: 비밀번호 변경 로직 (선택)
+- [x] services/userService.js 생성
+- [x] getUserProfile: 사용자 정보 조회 (비밀번호 제외)
+- [x] updateUserProfile: 정보 수정 로직
+- [x] changePassword: 비밀번호 변경 로직 (선택)
 
 ---
 
@@ -530,11 +528,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: BE-013
 
 **완료 조건**:
-- [ ] controllers/authController.js 생성
-- [ ] register, login, refresh, logout 핸들러 구현
-- [ ] req.body 데이터 추출 및 서비스 호출
-- [ ] 적절한 HTTP 상태 코드 (201, 200, 400, 401) 반환
-- [ ] 쿠키 또는 바디로 토큰 응답 처리
+- [x] controllers/authController.js 생성
+- [x] register, login, refresh, logout 핸들러 구현
+- [x] req.body 데이터 추출 및 서비스 호출
+- [x] 적절한 HTTP 상태 코드 (201, 200, 400, 401) 반환
+- [x] 쿠키 또는 바디로 토큰 응답 처리
 
 #### BE-018: Todo Controller 구현
 **우선순위**: P0
@@ -542,11 +540,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: BE-014
 
 **완료 조건**:
-- [ ] controllers/todoController.js 생성
-- [ ] getTodos, getTodoById, createTodo 핸들러 구현
-- [ ] updateTodo, deleteTodo, restoreTodo 핸들러 구현
-- [ ] req.user.userId를 사용하여 소유자 확인
-- [ ] 에러 발생 시 errorMiddleware로 전달
+- [x] controllers/todoController.js 생성
+- [x] getTodos, getTodoById, createTodo 핸들러 구현
+- [x] updateTodo, deleteTodo, restoreTodo 핸들러 구현
+- [x] req.user.userId를 사용하여 소유자 확인
+- [x] 에러 발생 시 errorMiddleware로 전달
 
 #### BE-019: Holiday Controller 구현
 **우선순위**: P0
@@ -554,10 +552,10 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: BE-015
 
 **완료 조건**:
-- [ ] controllers/holidayController.js 생성
-- [ ] getHolidays 핸들러 구현 (쿼리 파라미터 처리)
-- [ ] syncHolidays 핸들러 구현 (관리자 전용)
-- [ ] 외부 API 장애 시 적절한 에러 또는 캐시 데이터 응답
+- [x] controllers/holidayController.js 생성
+- [x] getHolidays 핸들러 구현 (쿼리 파라미터 처리)
+- [x] syncHolidays 핸들러 구현 (관리자 전용)
+- [x] 외부 API 장애 시 적절한 에러 또는 캐시 데이터 응답
 
 #### BE-020: User Controller 구현
 **우선순위**: P1
@@ -565,9 +563,9 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: BE-016
 
 **완료 조건**:
-- [ ] controllers/userController.js 생성
-- [ ] getMe, updateMe 핸들러 구현
-- [ ] 보안상 민감한 정보(비밀번호 등) 필터링 확인
+- [x] controllers/userController.js 생성
+- [x] getMe, updateMe 핸들러 구현
+- [x] 보안상 민감한 정보(비밀번호 등) 필터링 확인
 
 #### BE-021: Controller 에러 핸들링 래퍼
 **우선순위**: P1
@@ -575,9 +573,9 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: BE-007
 
 **완료 조건**:
-- [ ] utils/asyncHandler.js 생성
-- [ ] try-catch 블록 중복 제거를 위한 래퍼 함수 구현
-- [ ] 모든 컨트롤러에 asyncHandler 적용
+- [x] utils/asyncHandler.js 생성
+- [x] try-catch 블록 중복 제거를 위한 래퍼 함수 구현
+- [x] 모든 컨트롤러에 asyncHandler 적용
 
 ---
 
@@ -589,9 +587,9 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: BE-017
 
 **완료 조건**:
-- [ ] routes/authRoutes.js 생성
-- [ ] POST /register, /login, /refresh, /logout 라우트 연결
-- [ ] 입력 값 검증 미들웨어(validationMiddleware) 연결
+- [x] routes/authRoutes.js 생성
+- [x] POST /register, /login, /refresh, /logout 라우트 연결
+- [x] 입력 값 검증 미들웨어(validationMiddleware) 연결
 
 #### BE-023: Todo Routes 설정
 **우선순위**: P0
@@ -599,10 +597,10 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: BE-018
 
 **완료 조건**:
-- [ ] routes/todoRoutes.js 생성
-- [ ] GET /todos, POST /todos (authMiddleware 적용)
-- [ ] GET/PUT/DELETE /todos/:id 라우트 연결
-- [ ] PATCH /todos/:id/restore 라우트 연결
+- [x] routes/todoRoutes.js 생성
+- [x] GET /todos, POST /todos (authMiddleware 적용)
+- [x] GET/PUT/DELETE /todos/:id 라우트 연결
+- [x] PATCH /todos/:id/restore 라우트 연결
 
 #### BE-024: Holiday Routes 설정
 **우선순위**: P0
@@ -610,9 +608,9 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: BE-019
 
 **완료 조건**:
-- [ ] routes/holidayRoutes.js 생성
-- [ ] GET /holidays (인증 필요 여부 확인 - PRD상 공개 가능하나 인증 권장)
-- [ ] POST /holidays/sync (관리자 권한 미들웨어 필요)
+- [x] routes/holidayRoutes.js 생성
+- [x] GET /holidays (인증 필요 여부 확인 - PRD상 공개 가능하나 인증 권장)
+- [x] POST /holidays/sync (관리자 권한 미들웨어 필요)
 
 #### BE-025: User Routes 설정
 **우선순위**: P1
@@ -620,18 +618,9 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: BE-020
 
 **완료 조건**:
-- [ ] routes/userRoutes.js 생성
-- [ ] GET /me, PATCH /me 라우트 연결
-- [ ] authMiddleware 필수 적용 확인
-
-#### BE-026: 라우트 문서화 (주석)
-**우선순위**: P2
-**예상 소요 시간**: 1시간
-**의존성**: BE-022~025
-
-**완료 조건**:
-- [ ] 각 라우트 파일에 API 엔드포인트 설명 주석 추가
-- [ ] 요청/응답 예시 주석 작성
+- [x] routes/userRoutes.js 생성
+- [x] GET /me, PATCH /me 라우트 연결
+- [x] authMiddleware 필수 적용 확인
 
 #### BE-027: 라우트 통합
 **우선순위**: P0
@@ -639,10 +628,10 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: BE-022~025
 
 **완료 조건**:
-- [ ] routes/index.js 생성
-- [ ] 모든 라우트 모듈 임포트 및 결합
-- [ ] app.js에 메인 라우터 등록 (app.use('/api', routes))
-- [ ] 404 Not Found 핸들러 등록
+- [x] routes/index.js 생성
+- [x] 모든 라우트 모듈 임포트 및 결합
+- [x] app.js에 메인 라우터 등록 (app.use('/api', routes))
+- [x] 404 Not Found 핸들러 등록
 
 ---
 
@@ -654,11 +643,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: BE-027
 
 **완료 조건**:
-- [ ] Postman/Thunder Client 컬렉션 생성 완료
-- [ ] 회원가입 → 로그인 → 할일 생성 → 조회 플로우 테스트 성공
-- [ ] 할일 완료 → 삭제 → 휴지통 조회 → 복원 플로우 테스트 성공
-- [ ] 국경일 조회 테스트 성공
-- [ ] 에러 케이스 테스트 성공 (401, 403, 404, 409 등)
+- [x] Postman/Thunder Client 컬렉션 생성 완료
+- [x] 회원가입 → 로그인 → 할일 생성 → 조회 플로우 테스트 성공
+- [x] 할일 완료 → 삭제 → 휴지통 조회 → 복원 플로우 테스트 성공
+- [x] 국경일 조회 테스트 성공
+- [x] 에러 케이스 테스트 성공 (401, 403, 404, 409 등)
 
 ---
 

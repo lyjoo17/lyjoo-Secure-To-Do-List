@@ -1,0 +1,95 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// User 엔티티 - 사용자 계정 정보
+// ============================================
+model User {
+  userId    String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  username  String
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  todos Todo[]
+
+  // Indexes
+  @@index([role])
+  @@map("users")
+}
+
+// ============================================
+// Todo 엔티티 - 할일 정보
+// ============================================
+model Todo {
+  todoId      String     @id @default(uuid())
+  userId      String
+  title       String
+  content     String?
+  startDate   DateTime?
+  dueDate     DateTime?
+  status      TodoStatus @default(ACTIVE)
+  isCompleted Boolean    @default(false)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  deletedAt   DateTime?
+
+  // Relations
+  user User @relation(fields: [userId], references: [userId], onDelete: Cascade)
+
+  // Indexes
+  @@index([userId, status])
+  @@index([dueDate])
+  @@index([deletedAt])
+  @@map("todos")
+}
+
+// ============================================
+// Holiday 엔티티 - 국경일 정보
+// ============================================
+model Holiday {
+  holidayId   String   @id @default(uuid())
+  title       String
+  date        DateTime
+  description String?
+  isRecurring Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Indexes
+  @@index([date])
+  @@map("holidays")
+}
+
+// ============================================
+// Enum 정의
+// ============================================
+
+// 사용자 역할
+enum Role {
+  USER // 일반 사용자
+  ADMIN // 관리자 (국경일 관리 권한)
+
+  @@map("role")
+}
+
+// 할일 상태
+enum TodoStatus {
+  ACTIVE // 활성 (진행 중)
+  COMPLETED // 완료됨
+  DELETED // 삭제됨 (휴지통)
+
+  @@map("todo_status")
+}
