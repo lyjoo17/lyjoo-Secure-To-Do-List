@@ -32,7 +32,7 @@
 
 ### 1.1 제품 설명
 
-**WHS-TodoList**는 사용자 인증 기반의 개인 할일 관리 애플리케이션으로, 사용자별 할일 목록과 공통 국경일 일정을 통합 관리하는 웹 애플리케이션입니다.
+**lyjoo-secure-to-do-list**는 사용자 인증 기반의 개인 할일 관리 애플리케이션으로, 사용자별 할일 목록과 공통 국경일 일정을 통합 관리하는 웹 애플리케이션입니다.
 
 ### 1.2 핵심 가치
 
@@ -171,12 +171,14 @@
 | - | 할일 검색 | 제목/내용 기반 검색 | P1 |
 | - | 할일 필터링 | 날짜별, 상태별 필터 | P1 |
 | - | 할일 정렬 | 날짜, 상태 기준 정렬 | P1 |
+| - | 완료 축하 | 오늘의 할 일 모두 완료 시 폭죽 효과 표시 (canvas-confetti) | P1 |
 
 **비즈니스 규칙**:
 - [BR-02] 사용자는 자신의 할일만 조회/수정/삭제 가능
 - [BR-08] 할일 완료 시 isCompleted=true, status='completed'
 - [BR-12] 만료일은 시작일과 같거나 이후여야 함
 - [BR-13] 만료일 지난 할일은 UI에서 시각적 구분
+- [BR-14] 오늘의 할 일이 1개 이상이고 모두 완료되면 폭죽 애니메이션 실행
 
 #### 5.1.3 휴지통 관리
 
@@ -195,15 +197,22 @@
 | ID | 기능 | 설명 | 우선순위 |
 |----|------|------|----------|
 | [UC-11] | 국경일 조회 | 모든 사용자가 국경일 목록 조회 가능 | P0 |
-| - | 국경일 추가 | 관리자만 새로운 국경일 추가 가능 | P1 |
+| [UC-12] | 국경일 동기화 | 공공데이터포털 API에서 국경일 자동 동기화 | P0 |
+| - | 국경일 수동 추가 | 관리자만 새로운 국경일 수동 추가 가능 (API 미제공 항목) | P1 |
 | - | 국경일 수정 | 관리자만 기존 국경일 수정 가능 | P1 |
 
 **비즈니스 규칙**:
 - [BR-03] 모든 인증된 사용자가 조회 가능
-- [BR-04] 관리자(role='admin')만 추가/수정 권한
-- [BR-09] 관리자만 추가/수정 가능
-- [BR-10] 국경일은 삭제 불가
+- [BR-04] 관리자(role='admin')만 수동 추가/수정 권한
+- [BR-09] 국경일은 공공데이터포털 API에서 자동 동기화
+- [BR-09a] 동기화 실패 시 DB의 캐시된 국경일 데이터 사용
+- [BR-10] 국경일은 삭제 불가 (비활성화만 가능)
 - [BR-11] 매년 반복되는 일정 지원
+
+**국경일 데이터 소스**:
+- 1차: 공공데이터포털 API (자동 동기화, 일 1회)
+- 2차: DB 저장된 캐시 데이터 (API 장애 시)
+- 3차: 관리자 수동 입력 (API 미제공 항목)
 
 ### 5.2 기능 우선순위 정의
 
@@ -317,6 +326,7 @@ Build Tool: Vite
 - `zod`: 스키마 검증
 - `date-fns`: 날짜 처리
 - `lucide-react`: 아이콘
+- `canvas-confetti`: 폭죽 애니메이션 효과
 
 ### 7.2 백엔드
 
@@ -354,7 +364,30 @@ ORM: Prisma
 - 자동 백업 (Supabase)
 - Connection Pooling
 
-### 7.4 배포 및 인프라
+### 7.4 외부 API
+
+```
+Weather API: OpenWeatherMap
+Holiday API: 공공데이터포털 (공공 API)
+```
+
+**주요 기능**:
+- **OpenWeatherMap API**:
+  - 실시간 날씨 정보 제공
+  - 무료 플랜: 1,000 calls/day
+  - 사용 용도: 할일 목록 화면에 날씨 정보 표시
+
+- **공공데이터포털 API**:
+  - 대한민국 공휴일 정보 제공
+  - 무료 API
+  - 사용 용도: 국경일 자동 동기화 및 표시
+
+**API 통합 방식**:
+- 백엔드에서 프록시 형태로 호출 (API 키 보호)
+- 클라이언트는 백엔드 API를 통해 간접 호출
+- 에러 핸들링: API 장애 시 캐시된 데이터 또는 기본 메시지 표시
+
+### 7.5 배포 및 인프라
 
 ```
 Frontend Hosting: Vercel
@@ -370,7 +403,7 @@ Version Control: Git + GitHub
 - 환경 변수 관리: Vercel Environment Variables
 - 도메인: Vercel 제공 도메인 (커스텀 도메인은 선택)
 
-### 7.5 개발 도구
+### 7.6 개발 도구
 
 ```
 Code Editor: VS Code
@@ -380,6 +413,37 @@ Type Checking: TypeScript (선택)
 API Testing: Postman / Thunder Client
 Version Control: Git
 ```
+
+### 7.7 환경 변수 관리
+
+**필수 환경 변수**:
+
+| 변수명 | 용도 | 예시 |
+|--------|------|------|
+| `DATABASE_URL` | PostgreSQL 연결 문자열 | `postgresql://user:pass@host:5432/db` |
+| `JWT_SECRET` | JWT 토큰 서명 키 | `your-secret-key-here` |
+| `JWT_ACCESS_EXPIRES_IN` | Access Token 만료 시간 | `15m` |
+| `JWT_REFRESH_EXPIRES_IN` | Refresh Token 만료 시간 | `7d` |
+| `CORS_ORIGIN` | CORS 허용 도메인 | `https://your-app.vercel.app` |
+
+**외부 API 환경 변수**:
+
+| 변수명 | 용도 | 예시 |
+|--------|------|------|
+| `OPENWEATHERMAP_API_KEY` | 날씨 API 키 | `abcd1234efgh5678` |
+| `HOLIDAY_API_KEY` | 공휴일 API 키 (공공데이터포털) | `encoded-api-key` |
+
+**선택 환경 변수**:
+
+| 변수명 | 용도 | 기본값 |
+|--------|------|--------|
+| `PORT` | 서버 포트 | `3000` |
+| `NODE_ENV` | 실행 환경 | `development` |
+
+**환경 변수 관리 방식**:
+- **로컬 개발**: `.env` 파일 사용 (Git에서 제외)
+- **프로덕션**: Vercel Dashboard에서 Environment Variables 설정
+- **보안**: `.env.example` 파일로 필요한 변수 목록 공유
 
 ---
 
@@ -1134,6 +1198,10 @@ Authorization: Bearer {accessToken}
 **지원 디바이스**:
 - 데스크톱 (1024px+)
 - 모바일 (< 768px)
+
+**설계 원칙**:
+- **Mobile First Design**: 모바일 뷰를 우선적으로 설계하고 데스크톱으로 확장
+- **Touch Friendly**: 모든 인터랙션 요소는 터치하기 쉬운 크기와 간격 유지
 
 **브레이크포인트**:
 ```css
