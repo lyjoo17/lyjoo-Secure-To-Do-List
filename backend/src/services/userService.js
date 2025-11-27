@@ -23,11 +23,25 @@ const updateUserProfile = async (userId, userData) => {
     throw error
   }
 
-  if (userData.password) {
-    userData.password = await hashPassword(userData.password)
+  // Security Fix: Whitelist allowed fields to prevent Privilege Escalation (Mass Assignment)
+  // Only allow updating username and password
+  const safeUpdates = {}
+  
+  if (userData.username) {
+    safeUpdates.username = userData.username
   }
 
-  const updatedUser = await updateUser(userId, userData)
+  if (userData.password) {
+    safeUpdates.password = await hashPassword(userData.password)
+  }
+
+  // If there are no valid fields to update, return existing user data without database call
+  if (Object.keys(safeUpdates).length === 0) {
+    const { password, ...userWithoutPassword } = user
+    return userWithoutPassword
+  }
+
+  const updatedUser = await updateUser(userId, safeUpdates)
   const { password, ...userWithoutPassword } = updatedUser
   return userWithoutPassword
 }

@@ -97,9 +97,25 @@ const updateTodoValidation = [
   validate
 ]
 
+const updateUserValidation = [
+  body('username')
+    .optional()
+    .trim()
+    .notEmpty()
+    .withMessage('Username cannot be empty')
+    .isLength({ min: 2, max: 50 })
+    .withMessage('Username must be between 2 and 50 characters'),
+  body('password')
+    .optional()
+    .isLength({ min: 6 })
+    .withMessage('Password must be at least 6 characters long'),
+  validate
+]
+
 module.exports = {
   registerValidation,
   loginValidation,
   todoValidation,
-  updateTodoValidation
+  updateTodoValidation,
+  updateUserValidation
 }

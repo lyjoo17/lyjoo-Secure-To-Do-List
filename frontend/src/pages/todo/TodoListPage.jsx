@@ -28,23 +28,6 @@ const TodoListPage = () => {
     fetchHolidays(new Date().getFullYear());
   }, [filter, fetchTodos, fetchHolidays]);
 
-  const checkTodayCompletion = () => {
-    const today = new Date().toISOString().split('T')[0];
-    const todayTodos = todos.filter((todo) => {
-      const todoDueDate = todo.dueDate?.split('T')[0];
-      return todoDueDate === today && todo.status !== 'DELETED';
-    });
-
-    if (todayTodos.length > 0 && todayTodos.every((todo) => todo.isCompleted)) {
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 },
-      });
-      showToast('오늘의 할일을 모두 완료했습니다! 🎉', 'success');
-    }
-  };
-
   const handleAddTodo = async (data) => {
     const result = await addTodo(data);
     if (result.success) {
@@ -66,7 +49,14 @@ const TodoListPage = () => {
 
   const handleToggle = async (id, isCompleted) => {
     await toggleComplete(id, isCompleted);
-    checkTodayCompletion();
+
+    if (isCompleted) {
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+      });
+    }
   };
 
   const handleDelete = async () => {
