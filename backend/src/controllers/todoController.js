@@ -4,6 +4,7 @@ const {
   getTodoById,
   createNewTodo,
   updateExistingTodo,
+  toggleTodoComplete,
   deleteTodoSoft,
   restoreDeletedTodo,
   deleteTodoPermanently
@@ -103,11 +104,25 @@ const permanentDelete = asyncHandler(async (req, res) => {
   })
 })
 
+const toggleComplete = asyncHandler(async (req, res) => {
+  const { id } = req.params
+  const userId = req.user.userId
+
+  const todo = await toggleTodoComplete(id, userId)
+
+  res.status(200).json({
+    success: true,
+    message: 'Todo completion status toggled',
+    data: todo
+  })
+})
+
 module.exports = {
   getAllTodos,
   getSingleTodo,
   createTodo,
   updateTodo,
+  toggleComplete,
   deleteTodo,
   restoreTodo,
   permanentDelete

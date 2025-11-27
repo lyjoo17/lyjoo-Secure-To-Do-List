@@ -12,7 +12,12 @@ const useHolidayStore = create((set) => ({
     try {
       const params = year ? { year } : {};
       const response = await api.get(API_ENDPOINTS.HOLIDAYS.BASE, { params });
-      set({ holidays: response.data.data, isLoading: false });
+      const holidays = response.data.data.map((holiday) => ({
+        ...holiday,
+        id: holiday.holidayId,
+        name: holiday.title,
+      }));
+      set({ holidays, isLoading: false });
     } catch (error) {
       set({ isLoading: false, error: error.response?.data?.message || '국경일 조회 실패' });
     }
@@ -22,7 +27,12 @@ const useHolidayStore = create((set) => ({
     set({ isLoading: true, error: null });
     try {
       const response = await api.post(API_ENDPOINTS.HOLIDAYS.SYNC, { year });
-      set({ holidays: response.data.data, isLoading: false });
+      const holidays = response.data.data.map((holiday) => ({
+        ...holiday,
+        id: holiday.holidayId,
+        name: holiday.title,
+      }));
+      set({ holidays, isLoading: false });
       return { success: true };
     } catch (error) {
       set({ isLoading: false, error: error.response?.data?.message || '국경일 동기화 실패' });

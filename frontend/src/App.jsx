@@ -10,8 +10,11 @@ import HolidayPage from './pages/holiday/HolidayPage';
 import ProfilePage from './pages/profile/ProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
 import Toast from './components/common/Toast';
+import useTheme from './hooks/useTheme';
 
 function App() {
+  useTheme();
+
   return (
     <BrowserRouter>
       <Toast />

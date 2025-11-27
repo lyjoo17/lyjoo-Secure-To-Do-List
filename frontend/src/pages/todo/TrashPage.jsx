@@ -10,7 +10,7 @@ import { format } from 'date-fns';
 import { ko } from 'date-fns/locale';
 
 const TrashPage = () => {
-  const { todos, fetchTodos, restoreTodo, deleteTodo, isLoading } = useTodoStore();
+  const { todos, fetchTodos, restoreTodo, permanentDeleteTodo, isLoading } = useTodoStore();
   const { showToast } = useUIStore();
 
   const [restoreId, setRestoreId] = useState(null);
@@ -36,7 +36,7 @@ const TrashPage = () => {
   const handlePermanentDelete = async () => {
     if (!permanentDeleteId) return;
 
-    const result = await deleteTodo(permanentDeleteId);
+    const result = await permanentDeleteTodo(permanentDeleteId);
     if (result.success) {
       showToast('할일이 영구 삭제되었습니다', 'success');
       fetchTodos('DELETED');

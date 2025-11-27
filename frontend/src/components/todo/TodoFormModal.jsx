@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -8,7 +9,7 @@ import Input from '../common/Input';
 const todoSchema = z
   .object({
     title: z.string().min(1, '제목을 입력해주세요').max(200, '제목은 200자 이하여야 합니다'),
-    content: z.string().optional(),
+    description: z.string().optional(),
     startDate: z.string().optional(),
     dueDate: z.string().optional(),
   })
@@ -26,6 +27,25 @@ const todoSchema = z
   );
 
 const TodoFormModal = ({ isOpen, onClose, onSubmit, initialData = null }) => {
+  const formatDateForInput = (dateString) => {
+    if (!dateString) return '';
+    try {
+      const date = new Date(dateString);
+      return date.toISOString().split('T')[0];
+    } catch {
+      return '';
+    }
+  };
+
+  const formattedInitialData = initialData
+    ? {
+        title: initialData.title,
+        description: initialData.description,
+        startDate: formatDateForInput(initialData.startDate),
+        dueDate: formatDateForInput(initialData.dueDate),
+      }
+    : {};
+
   const {
     register,
     handleSubmit,
@@ -33,8 +53,14 @@ const TodoFormModal = ({ isOpen, onClose, onSubmit, initialData = null }) => {
     reset,
   } = useForm({
     resolver: zodResolver(todoSchema),
-    defaultValues: initialData || {},
+    defaultValues: formattedInitialData,
   });
+
+  useEffect(() => {
+    if (isOpen) {
+      reset(formattedInitialData);
+    }
+  }, [isOpen, initialData, reset]);
 
   const handleFormSubmit = async (data) => {
     await onSubmit(data);
@@ -68,13 +94,13 @@ const TodoFormModal = ({ isOpen, onClose, onSubmit, initialData = null }) => {
             설명
           </label>
           <textarea
-            {...register('content')}
+            {...register('description')}
             rows={3}
             className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
             placeholder="할일 설명 (선택사항)"
           />
-          {errors.content && (
-            <p className="mt-1 text-sm text-red-600">{errors.content.message}</p>
+          {errors.description && (
+            <p className="mt-1 text-sm text-red-600">{errors.description.message}</p>
           )}
         </div>
 

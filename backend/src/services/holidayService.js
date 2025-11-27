@@ -8,7 +8,11 @@ const syncHolidays = async (holidaysData) => {
   const results = []
 
   for (const holiday of holidaysData) {
-    const created = await createHoliday(holiday)
+    const formattedData = {
+      ...holiday,
+      date: new Date(holiday.date)
+    }
+    const created = await createHoliday(formattedData)
     results.push(created)
   }
 

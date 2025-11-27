@@ -9,6 +9,7 @@ export const API_ENDPOINTS = {
     BASE: '/todos',
     BY_ID: (id) => `/todos/${id}`,
     RESTORE: (id) => `/todos/${id}/restore`,
+    PERMANENT: (id) => `/todos/${id}/permanent`,
   },
   HOLIDAYS: {
     BASE: '/holidays',

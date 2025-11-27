@@ -56,6 +56,10 @@ const todoValidation = [
     .optional()
     .isISO8601()
     .withMessage('Due date must be a valid date'),
+  body('priority')
+    .optional()
+    .isIn(['LOW', 'MEDIUM', 'HIGH'])
+    .withMessage('Priority must be LOW, MEDIUM, or HIGH'),
   validate
 ]
 
@@ -78,6 +82,18 @@ const updateTodoValidation = [
     .optional()
     .isISO8601()
     .withMessage('Due date must be a valid date'),
+  body('isCompleted')
+    .optional()
+    .isBoolean()
+    .withMessage('isCompleted must be a boolean value'),
+  body('status')
+    .optional()
+    .isIn(['ACTIVE', 'COMPLETED', 'DELETED'])
+    .withMessage('Status must be ACTIVE, COMPLETED, or DELETED'),
+  body('priority')
+    .optional()
+    .isIn(['LOW', 'MEDIUM', 'HIGH'])
+    .withMessage('Priority must be LOW, MEDIUM, or HIGH'),
   validate
 ]
 

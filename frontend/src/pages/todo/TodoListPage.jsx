@@ -32,7 +32,7 @@ const TodoListPage = () => {
     const today = new Date().toISOString().split('T')[0];
     const todayTodos = todos.filter((todo) => {
       const todoDueDate = todo.dueDate?.split('T')[0];
-      return todoDueDate === today && todo.status === 'ACTIVE';
+      return todoDueDate === today && todo.status !== 'DELETED';
     });
 
     if (todayTodos.length > 0 && todayTodos.every((todo) => todo.isCompleted)) {
@@ -123,7 +123,7 @@ const TodoListPage = () => {
         <div className="mb-6 p-4 bg-primary-50 dark:bg-primary-900 border border-primary-200 dark:border-primary-700 rounded-lg flex items-center gap-3">
           <span className="text-2xl">📢</span>
           <p className="text-primary-800 dark:text-primary-200 font-medium">
-            [오늘의 국경일] <strong>{todayHoliday.name}</strong>
+            [오늘의 국경일] <strong>{todayHoliday.name || todayHoliday.title}</strong>
           </p>
         </div>
       )}

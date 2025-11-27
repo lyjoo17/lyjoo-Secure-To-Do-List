@@ -5,6 +5,7 @@ const {
   getSingleTodo,
   createTodo,
   updateTodo,
+  toggleComplete,
   deleteTodo,
   restoreTodo,
   permanentDelete
@@ -18,6 +19,7 @@ router.get('/', getAllTodos)
 router.post('/', todoValidation, createTodo)
 router.get('/:id', getSingleTodo)
 router.put('/:id', updateTodoValidation, updateTodo)
+router.patch('/:id/toggle', toggleComplete)
 router.delete('/:id', deleteTodo)
 router.patch('/:id/restore', restoreTodo)
 router.delete('/:id/permanent', permanentDelete)

@@ -95,11 +95,23 @@ const deleteTodoPermanently = async (todoId, userId) => {
   return await deletePermanently(todoId)
 }
 
+const toggleTodoComplete = async (todoId, userId) => {
+  const todo = await getTodoById(todoId, userId)
+
+  const updatedData = {
+    isCompleted: !todo.isCompleted,
+    status: !todo.isCompleted ? 'COMPLETED' : 'ACTIVE'
+  }
+
+  return await updateTodo(todoId, updatedData)
+}
+
 module.exports = {
   getTodos,
   getTodoById,
   createNewTodo,
   updateExistingTodo,
+  toggleTodoComplete,
   deleteTodoSoft,
   restoreDeletedTodo,
   deleteTodoPermanently

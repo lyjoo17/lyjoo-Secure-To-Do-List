@@ -108,7 +108,7 @@ const HolidayPage = () => {
                         <div className="flex-1">
                           <div className="flex items-center gap-2">
                             <h3 className="font-semibold text-gray-900 dark:text-white">
-                              {holiday.name}
+                              {holiday.name || holiday.title}
                             </h3>
                             {holiday.isRecurring && <Badge variant="primary">매년</Badge>}
                           </div>
