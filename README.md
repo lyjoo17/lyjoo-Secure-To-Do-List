@@ -171,8 +171,38 @@ npm test
 
 ### 프론트엔드 설정
 
-(프론트엔드 구현 후 작성 예정)
+1. 프론트엔드 디렉토리로 이동
+```bash
+cd frontend
+```
+
+2. 의존성 설치
+```bash
+npm install
+```
+
+3. 환경 변수 설정
+```bash
+# .env 파일 생성 (없을 경우)
+VITE_API_BASE_URL="http://localhost:3000/api"
+```
+
+4. 개발 서버 실행
+```bash
+npm run dev
+```
+브라우저에서 `http://localhost:5173`으로 접속하여 애플리케이션을 확인하세요.
+
+### 빌드 및 배포
+
+```bash
+# 프론트엔드 빌드
+npm run build
+
+# 결과물 미리보기
+npm run preview
+```
 
 ## 라이선스
 
-(추후 작성 예정)
+ISC License

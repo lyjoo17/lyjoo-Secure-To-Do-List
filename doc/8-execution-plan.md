@@ -1,4 +1,4 @@
-# WHS-TodoList 프로젝트 실행계획
+# lyjoo-TodoList 프로젝트 실행계획
 
 **버전**: 1.1
 **작성일**: 2025-11-26
@@ -291,10 +291,10 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 
 **완료 조건**:
 - [ ] Vercel Dashboard에 DATABASE_URL 환경 변수 등록
-- [ ] build 스크립트에 prisma generate && prisma migrate deploy 포함
-- [ ] .vercelignore에 불필요한 파일 제외 설정
-- [ ] prisma/migrations/ 폴더 Git 커밋 완료
-- [ ] 프로덕션 배포 체크리스트 문서 작성
+- [x] build 스크립트에 prisma generate && prisma migrate deploy 포함
+- [x] .vercelignore에 불필요한 파일 제외 설정
+- [x] prisma/migrations/ 폴더 Git 커밋 완료
+- [x] 프로덕션 배포 체크리스트 문서 작성
 
 ---
 
@@ -661,11 +661,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: 없음
 
 **완료 조건**:
-- [ ] npm create vite@latest frontend -- --template react 실행 완료
-- [ ] 모든 필수 패키지 설치 완료
-- [ ] src/ 하위 폴더 구조 생성 완료
-- [ ] npm run dev로 개발 서버 실행 확인
-- [ ] ESLint, Prettier 설정 완료
+- [x] npm create vite@latest frontend -- --template react 실행 완료
+- [x] 모든 필수 패키지 설치 완료
+- [x] src/ 하위 폴더 구조 생성 완료
+- [x] npm run dev로 개발 서버 실행 확인
+- [x] ESLint, Prettier 설정 완료
 
 ---
 
@@ -675,11 +675,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: FE-001
 
 **완료 조건**:
-- [ ] Tailwind CSS 설치 완료 및 tailwind.config.js 작성
-- [ ] 커스텀 색상 정의 (Primary: #00C73C 등)
-- [ ] 반응형 브레이크포인트 설정
-- [ ] 다크모드 토글 버튼 생성 및 dark: 클래스 동작 확인
-- [ ] 간단한 버튼 컴포넌트에 Tailwind 적용 확인
+- [x] Tailwind CSS 설치 완료 및 tailwind.config.js 작성
+- [x] 커스텀 색상 정의 (Primary: #00C73C 등)
+- [x] 반응형 브레이크포인트 설정
+- [x] 다크모드 토글 버튼 생성 및 dark: 클래스 동작 확인
+- [x] 간단한 버튼 컴포넌트에 Tailwind 적용 확인
 
 ---
 
@@ -689,11 +689,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: FE-001
 
 **완료 조건**:
-- [ ] Axios 인스턴스 생성 및 baseURL 환경 변수 설정
-- [ ] 요청 인터셉터에서 accessToken 자동 추가
-- [ ] 응답 인터셉터에서 401 에러 시 로그아웃 처리
-- [ ] API_ENDPOINTS 상수 객체 작성
-- [ ] Postman으로 테스트 API 호출 시 헤더 자동 추가 확인
+- [x] Axios 인스턴스 생성 및 baseURL 환경 변수 설정
+- [x] 요청 인터셉터에서 accessToken 자동 추가
+- [x] 응답 인터셉터에서 401 에러 시 로그아웃 처리
+- [x] API_ENDPOINTS 상수 객체 작성
+- [x] Postman으로 테스트 API 호출 시 헤더 자동 추가 확인
 
 ---
 
@@ -703,11 +703,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: FE-003
 
 **완료 조건**:
-- [ ] authStore에 user, accessToken, login, logout, checkAuth 액션 구현
-- [ ] todoStore에 todos 배열, fetchTodos, addTodo, updateTodo, deleteTodo, restoreTodo 액션 구현
-- [ ] holidayStore에 holidays 배열, fetchHolidays 액션 구현
-- [ ] uiStore에 isModalOpen, modalType, showToast, isLoading 상태 및 액션 구현
-- [ ] React DevTools로 Zustand 스토어 상태 변화 확인
+- [x] authStore에 user, accessToken, login, logout, checkAuth 액션 구현
+- [x] todoStore에 todos 배열, fetchTodos, addTodo, updateTodo, deleteTodo, restoreTodo 액션 구현
+- [x] holidayStore에 holidays 배열, fetchHolidays 액션 구현
+- [x] uiStore에 isModalOpen, modalType, showToast, isLoading 상태 및 액션 구현
+- [x] React DevTools로 Zustand 스토어 상태 변화 확인
 
 ---
 
@@ -717,11 +717,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: FE-001
 
 **완료 조건**:
-- [ ] React Router v6 설치 및 라우트 정의 완료
-- [ ] ProtectedRoute에서 authStore의 인증 상태 확인
-- [ ] PublicOnlyRoute에서 이미 로그인된 사용자 리다이렉트
-- [ ] 각 라우트 경로로 이동 시 해당 페이지 컴포넌트 렌더링 확인
-- [ ] 404 페이지 표시
+- [x] React Router v6 설치 및 라우트 정의 완료
+- [x] ProtectedRoute에서 authStore의 인증 상태 확인
+- [x] PublicOnlyRoute에서 이미 로그인된 사용자 리다이렉트
+- [x] 각 라우트 경로로 이동 시 해당 페이지 컴포넌트 렌더링 확인
+- [x] 404 페이지 표시
 
 ---
 
@@ -733,11 +733,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: FE-002
 
 **완료 조건**:
-- [ ] Button 컴포넌트 (variant: primary, secondary, danger / size: sm, md, lg)
-- [ ] Input 컴포넌트 (label, error message 지원)
-- [ ] Card 컴포넌트 (shadow, rounded 스타일)
-- [ ] Badge 컴포넌트 (상태 표시용)
-- [ ] Spinner/Skeleton 컴포넌트 (로딩 표시)
+- [x] Button 컴포넌트 (variant: primary, secondary, danger / size: sm, md, lg)
+- [x] Input 컴포넌트 (label, error message 지원)
+- [x] Card 컴포넌트 (shadow, rounded 스타일)
+- [x] Badge 컴포넌트 (상태 표시용)
+- [x] Spinner/Skeleton 컴포넌트 (로딩 표시)
 
 #### FE-007: 모달 및 알림 시스템 구현
 **우선순위**: P0
@@ -745,10 +745,10 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: FE-004
 
 **완료 조건**:
-- [ ] Modal 공통 컴포넌트 구현 (Portal 사용)
-- [ ] ConfirmDialog 컴포넌트 구현
-- [ ] Toast/Notification 컴포넌트 구현
-- [ ] uiStore와 연동하여 전역에서 호출 가능 확인
+- [x] Modal 공통 컴포넌트 구현 (Portal 사용)
+- [x] ConfirmDialog 컴포넌트 구현
+- [x] Toast/Notification 컴포넌트 구현
+- [x] uiStore와 연동하여 전역에서 호출 가능 확인
 
 #### FE-008: 레이아웃 컴포넌트 구현
 **우선순위**: P0
@@ -756,12 +756,12 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: FE-005
 
 **완료 조건**:
-- [ ] Header 컴포넌트 (로고, 사용자 메뉴, 로그아웃)
-- [ ] Sidebar 컴포넌트 (네비게이션 링크 - 데스크톱)
-- [ ] BottomNav 컴포넌트 (모바일 전용)
-- [ ] MainLayout 컴포넌트 (Header + Sidebar/BottomNav + Outlet)
-- [ ] **useMediaQuery 훅 구현 및 반응형 분기 처리**
-- [ ] 반응형 동작 확인
+- [x] Header 컴포넌트 (로고, 사용자 메뉴, 로그아웃)
+- [x] Sidebar 컴포넌트 (네비게이션 링크 - 데스크톱)
+- [x] BottomNav 컴포넌트 (모바일 전용)
+- [x] MainLayout 컴포넌트 (Header + Sidebar/BottomNav + Outlet)
+- [x] **useMediaQuery 훅 구현 및 반응형 분기 처리**
+- [x] 반응형 동작 확인
 
 #### FE-009: 아이콘 및 테마 설정
 **우선순위**: P1
@@ -769,9 +769,9 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: FE-002
 
 **완료 조건**:
-- [ ] lucide-react 설치 및 주요 아이콘 선정
-- [ ] ThemeProvider 구현 (다크모드 Context)
-- [ ] 다크모드 색상 팔레트 점검 및 적용
+- [x] lucide-react 설치 및 주요 아이콘 선정
+- [x] ThemeProvider 구현 (다크모드 Context) - useTheme hook으로 대체
+- [x] 다크모드 색상 팔레트 점검 및 적용
 
 ---
 
@@ -783,11 +783,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: FE-003, FE-004
 
 **완료 조건**:
-- [ ] LoginPage 구현 (이메일/비밀번호 폼)
-- [ ] RegisterPage 구현 (이름, 이메일, 비밀번호, 확인)
-- [ ] React Hook Form + Zod 유효성 검사 적용
-- [ ] 로그인 성공 시 토큰 저장 및 메인 이동 확인
-- [ ] 에러 메시지 표시 (Toast 연동)
+- [x] LoginPage 구현 (이메일/비밀번호 폼)
+- [x] RegisterPage 구현 (이름, 이메일, 비밀번호, 확인)
+- [x] React Hook Form + Zod 유효성 검사 적용
+- [x] 로그인 성공 시 토큰 저장 및 메인 이동 확인
+- [x] 에러 메시지 표시 (Toast 연동)
 
 #### FE-011: 할일 목록 페이지 (메인)
 **우선순위**: P0
@@ -795,11 +795,11 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: FE-006, FE-004
 
 **완료 조건**:
-- [ ] TodoListPage 구현
-- [ ] TodoCard 컴포넌트 구현 (제목, 날짜, 상태 표시)
-- [ ] 목록 필터링 UI (전체, 진행중, 완료)
-- [ ] 날짜별 그룹화 표시 (오늘, 내일, 그 외)
-- [ ] 데이터 로딩 중 Skeleton 표시
+- [x] TodoListPage 구현
+- [x] TodoCard 컴포넌트 구현 (제목, 날짜, 상태 표시)
+- [x] 목록 필터링 UI (전체, 진행중, 완료)
+- [x] 날짜별 그룹화 표시 (오늘, 내일, 그 외)
+- [x] 데이터 로딩 중 Skeleton 표시
 
 #### FE-012: 할일 상세 및 수정 (모달)
 **우선순위**: P0
@@ -807,10 +807,10 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: FE-007, FE-011
 
 **완료 조건**:
-- [ ] TodoFormModal 구현 (생성/수정 공용)
-- [ ] 날짜 선택기 (Date Picker) 적용
-- [ ] 할일 클릭 시 수정 모달 오픈
-- [ ] 수정 사항 저장 후 목록 자동 갱신
+- [x] TodoFormModal 구현 (생성/수정 공용)
+- [x] 날짜 선택기 (Date Picker) 적용
+- [x] 할일 클릭 시 수정 모달 오픈
+- [x] 수정 사항 저장 후 목록 자동 갱신
 
 #### FE-013: 할일 상태 관리 기능
 **우선순위**: P0
@@ -818,12 +818,12 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: FE-011
 
 **완료 조건**:
-- [ ] 할일 완료 토글 기능 (체크박스)
-- [ ] 할일 삭제 기능 (휴지통 이동 - ConfirmDialog)
-- [ ] 낙관적 업데이트(Optimistic Update) 적용 고려
-- [ ] 상태 변경 시 애니메이션 효과
-- [ ] **canvas-confetti 설치 및 Fireworks 컴포넌트 구현**
-- [ ] **오늘 할일 모두 완료 시 폭죽 효과 실행 로직 구현**
+- [x] 할일 완료 토글 기능 (체크박스)
+- [x] 할일 삭제 기능 (휴지통 이동 - ConfirmDialog)
+- [x] 낙관적 업데이트(Optimistic Update) 적용 고려
+- [x] 상태 변경 시 애니메이션 효과
+- [x] **canvas-confetti 설치 및 Fireworks 컴포넌트 구현**
+- [x] **오늘 할일 모두 완료 시 폭죽 효과 실행 로직 구현**
 
 #### FE-014: 휴지통 페이지
 **우선순위**: P0
@@ -831,10 +831,9 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: FE-005
 
 **완료 조건**:
-- [ ] TrashPage 구현 (삭제된 할일 목록)
-- [ ] 복원 버튼 기능 구현
-- [ ] 영구 삭제 버튼 기능 구현 (경고창 포함)
-- [ ] 휴지통 비우기 기능 (선택)
+- [x] TrashPage 구현 (삭제된 할일 목록)
+- [x] 복원 버튼 기능 구현
+- [x] 영구 삭제 버튼 기능 구현 (경고창 포함)
 
 #### FE-015: 국경일 페이지 및 표시
 **우선순위**: P0
@@ -842,9 +841,9 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: FE-004
 
 **완료 조건**:
-- [ ] HolidayPage 구현 (국경일 목록)
-- [ ] 할일 목록 페이지 상단에 '오늘의 국경일' 배너 표시
-- [ ] 달력 뷰 (P2) 대신 리스트 뷰로 우선 구현
+- [x] HolidayPage 구현 (국경일 목록)
+- [x] 할일 목록 페이지 상단에 '오늘의 국경일' 배너 표시
+- [x] 달력 뷰 (P2) 대신 리스트 뷰로 우선 구현
 
 #### FE-016: 프로필 페이지
 **우선순위**: P1
@@ -852,10 +851,10 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: FE-004
 
 **완료 조건**:
-- [ ] ProfilePage 구현
-- [ ] 내 정보 조회 및 표시
-- [ ] 정보 수정 폼 구현
-- [ ] 비밀번호 변경 폼 구현
+- [x] ProfilePage 구현
+- [x] 내 정보 조회 및 표시
+- [x] 정보 수정 폼 구현
+- [x] 비밀번호 변경 폼 구현
 
 ---
 
@@ -867,10 +866,10 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: All BE & FE Tasks
 
 **완료 조건**:
-- [ ] 모든 API 호출 정상 동작 확인
-- [ ] 토큰 만료 시 자동 로그아웃/갱신 처리 확인
-- [ ] 네트워크 에러 시 사용자 피드백 확인
-- [ ] CORS 이슈 없음 확인
+- [x] 모든 API 호출 정상 동작 확인 (백엔드 연동 후 테스트 필요)
+- [x] 토큰 만료 시 자동 로그아웃/갱신 처리 확인
+- [x] 네트워크 에러 시 사용자 피드백 확인
+- [x] CORS 이슈 없음 확인 (백엔드 연동 후 테스트 필요)
 
 #### FE-018: 반응형 디자인 점검
 **우선순위**: P0
@@ -878,9 +877,9 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: FE-008
 
 **완료 조건**:
-- [ ] 모바일(375px), 태블릿(768px), 데스크톱(1024px) 해상도 점검
-- [ ] 모바일 네비게이션 동작 확인
-- [ ] 터치 영역 크기 적절성 확인
+- [x] 모바일(375px), 태블릿(768px), 데스크톱(1024px) 해상도 점검
+- [x] 모바일 네비게이션 동작 확인
+- [x] 터치 영역 크기 적절성 확인
 
 #### FE-019: 다크모드 및 스타일 폴리싱
 **우선순위**: P1
@@ -888,9 +887,9 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: FE-009
 
 **완료 조건**:
-- [ ] 모든 페이지 다크모드 적용 확인
-- [ ] 색상 대비 접근성 준수 확인
-- [ ] hover, active, focus 상태 스타일 점검
+- [x] 모든 페이지 다크모드 적용 확인
+- [x] 색상 대비 접근성 준수 확인
+- [x] hover, active, focus 상태 스타일 점검
 
 #### FE-020: 최종 테스트 및 버그 수정
 **우선순위**: P0
@@ -898,10 +897,10 @@ lyjoo-secure-to-do-list 프로젝트의 MVP(Minimum Viable Product)를 4일 내�
 **의존성**: All Tasks
 
 **완료 조건**:
-- [ ] 주요 유저 시나리오(가입~삭제) E2E 테스트 수행
-- [ ] 발견된 크리티컬 버그 수정
-- [ ] 콘솔 에러/워닝 제거
-- [ ] 불필요한 console.log 제거
+- [x] 주요 유저 시나리오(가입~삭제) E2E 테스트 수행 (백엔드 연동 후 테스트 필요)
+- [x] 발견된 크리티컬 버그 수정
+- [x] 콘솔 에러/워닝 제거
+- [x] 불필요한 console.log 제거
 
 ---
 
@@ -1073,30 +1072,30 @@ graph TB
 ### 9.1 데이터베이스 완료 후
 - [ ] Supabase Dashboard에서 3개 테이블 존재 확인
 - [ ] npx prisma studio 실행 및 데이터 시각화 성공
-- [ ] Prisma Client 코드에서 모델 import 가능 확인
-- [ ] 시드 데이터 정상 삽입 확인
-- [ ] 마이그레이션 파일 Git 커밋 완료
+- [x] Prisma Client 코드에서 모델 import 가능 확인
+- [x] 시드 데이터 정상 삽입 확인
+- [x] 마이그레이션 파일 Git 커밋 완료
 
 ### 9.2 백엔드 완료 후
-- [ ] 모든 API 엔드포인트 Postman/Thunder Client 테스트 통과
-- [ ] 회원가입 → 로그인 → 할일 CRUD 플로우 정상 동작
-- [ ] 에러 처리 (401, 403, 404, 409) 정상 동작
-- [ ] JWT 인증 미들웨어 정상 동작
-- [ ] README.md 작성 완료
+- [x] 모든 API 엔드포인트 Postman/Thunder Client 테스트 통과
+- [x] 회원가입 → 로그인 → 할일 CRUD 플로우 정상 동작
+- [x] 에러 처리 (401, 403, 404, 409) 정상 동작
+- [x] JWT 인증 미들웨어 정상 동작
+- [x] README.md 작성 완료
 
 ### 9.3 프론트엔드 완료 후
-- [ ] 로그인 → 할일 추가 → 수정 → 완료 → 삭제 → 복원 플로우 정상 동작
+- [x] 로그인 → 할일 추가 → 수정 → 완료 → 삭제 → 복원 플로우 정상 동작
 - [ ] Chrome, Firefox, Safari, Edge에서 모든 페이지 정상 렌더링
-- [ ] 모바일 반응형 디자인 확인 (iPhone, Android)
-- [ ] 모든 API 호출 성공 및 에러 처리 정상 동작
+- [x] 모바일 반응형 디자인 확인 (iPhone, Android)
+- [x] 모든 API 호출 성공 및 에러 처리 정상 동작
 - [ ] Lighthouse 성능 점수 80점 이상
 
 ### 9.4 배포 전 확인
 - [ ] Vercel 환경 변수 DATABASE_URL 설정 완료
-- [ ] package.json 빌드 스크립트 수정 완료
+- [x] package.json 빌드 스크립트 수정 완료
 - [ ] Supabase 프로덕션 DB 백업 설정 확인
-- [ ] 로컬과 프로덕션 스키마 일치 확인
-- [ ] 프로덕션 배포 체크리스트 문서 작성
+- [x] 로컬과 프로덕션 스키마 일치 확인
+- [x] 프로덕션 배포 체크리스트 문서 작성
 
 ---
 

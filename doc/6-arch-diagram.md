@@ -1,4 +1,4 @@
-# WHS-TodoList 기술 아키텍처 다이어그램
+# lyjoo-TodoList 기술 아키텍처 다이어그램
 
 **버전**: 1.0
 **작성일**: 2025-11-26
@@ -187,20 +187,17 @@ graph TB
 ```mermaid
 graph TB
     subgraph Presentation["Presentation Layer - UI"]
-        Pages[Pages<br/>LoginPage, TodoListPage]
-        Components[Components<br/>TodoCard, Button]
+        Pages[Pages<br/>인증, 할일, 국경일, 프로필 페이지]
+        Components[Components<br/>TodoCard, Button, Input 등]
     end
 
     subgraph State["State Management Layer"]
-        Zustand[Zustand Stores<br/>todoStore, authStore]
-        Hooks[Custom Hooks<br/>useTodos, useAuth]
+        Zustand[Zustand Stores<br/>authStore, todoStore, holidayStore, uiStore]
+        Hooks[Custom Hooks<br/>useMediaQuery, useTheme]
     end
 
-    subgraph Service["Service Layer - API 통신"]
-        TodoService[todoService.js<br/>할일 API 호출]
-        AuthService[authService.js<br/>인증 API 호출]
-        HolidayService[holidayService.js<br/>공휴일 API 호출]
-        AxiosClient[Axios Instance<br/>HTTP 클라이언트]
+    subgraph Service["API Client Layer"]
+        AxiosClient[Axios Instance<br/>api.js]
     end
 
     subgraph Backend["Backend API"]
@@ -210,13 +207,8 @@ graph TB
     Pages -->|사용| Components
     Pages -->|사용| Hooks
     Hooks -->|사용| Zustand
-    Zustand -->|호출| TodoService
-    Zustand -->|호출| AuthService
-    Zustand -->|호출| HolidayService
-    TodoService -->|사용| AxiosClient
-    AuthService -->|사용| AxiosClient
-    HolidayService -->|사용| AxiosClient
-    AxiosClient -->|HTTP 요청| RestAPI
+    Zustand -->|HTTP 요청| AxiosClient
+    AxiosClient -->|API 호출| RestAPI
 
     style Presentation fill:#e3f2fd
     style State fill:#fff3e0
@@ -224,35 +216,55 @@ graph TB
     style Backend fill:#f3e5f5
 ```
 
-### 3.2 프론트엔드 폴더 구조 (간소화)
+### 3.2 프론트엔드 폴더 구조
 
 ```
 frontend/src/
-├── pages/              # 페이지 컴포넌트
-│   ├── LoginPage.jsx
-│   ├── TodoListPage.jsx
-│   └── TrashPage.jsx
-├── components/         # 재사용 컴포넌트
-│   ├── common/
+├── components/         # 재사용 가능한 컴포넌트
+│   ├── auth/           # 인증 관련 컴포넌트
+│   ├── common/         # 공통 컴포넌트
+│   │   ├── Badge.jsx
 │   │   ├── Button.jsx
+│   │   ├── Card.jsx
+│   │   ├── ConfirmDialog.jsx
 │   │   ├── Input.jsx
-│   │   └── Modal.jsx
-│   └── todo/
+│   │   ├── Modal.jsx
+│   │   ├── Skeleton.jsx
+│   │   ├── Spinner.jsx
+│   │   └── Toast.jsx
+│   ├── layout/         # 레이아웃 컴포넌트
+│   │   ├── BottomNav.jsx
+│   │   ├── Header.jsx
+│   │   ├── MainLayout.jsx
+│   │   └── Sidebar.jsx
+│   └── todo/           # 할일 관련 컴포넌트
 │       ├── TodoCard.jsx
-│       └── TodoList.jsx
-├── stores/            # Zustand 스토어
+│       ├── TodoFormModal.jsx
+│       └── TodoSkeleton.jsx
+├── pages/              # 페이지 컴포넌트
+│   ├── auth/           # 인증 관련 페이지
+│   │   ├── LoginPage.jsx
+│   │   └── RegisterPage.jsx
+│   ├── holiday/        # 국경일 페이지
+│   │   └── HolidayPage.jsx
+│   ├── profile/        # 프로필 페이지
+│   │   └── ProfilePage.jsx
+│   ├── todo/           # 할일 관련 페이지
+│   │   ├── TodoListPage.jsx
+│   │   └── TrashPage.jsx
+│   └── NotFoundPage.jsx
+├── store/              # Zustand 스토어
 │   ├── todoStore.js
-│   └── authStore.js
-├── services/          # API 서비스
+│   ├── authStore.js
+│   ├── holidayStore.js
+│   └── uiStore.js
+├── services/           # API 클라이언트 및 상수
 │   ├── api.js
-│   ├── todoService.js
-│   └── authService.js
-├── hooks/             # 커스텀 훅
-│   ├── useTodos.js
-│   └── useAuth.js
-└── utils/             # 유틸리티
-    ├── dateFormatter.js
-    └── validator.js
+│   └── constants.js
+├── hooks/              # 커스텀 훅
+│   ├── useMediaQuery.js
+│   └── useTheme.js
+└── utils/              # 유틸리티 (현재 비어 있음)
 ```
 
 ### 3.3 상태 관리 흐름
@@ -262,16 +274,17 @@ sequenceDiagram
     participant User as 사용자
     participant Page as TodoListPage
     participant Store as todoStore
-    participant Service as todoService
-    participant API as Backend API
+    participant APIClient as api.js
+    participant Backend as Backend API
 
     User->>Page: 할일 생성 버튼 클릭
-    Page->>Store: addTodo() 호출
-    Store->>Service: createTodo(data)
-    Service->>API: POST /api/todos
-    API-->>Service: 201 Created
-    Service-->>Store: 생성된 할일 반환
-    Store-->>Page: 상태 업데이트
+    Page->>Store: addTodo(data) 호출
+    Store->>APIClient: POST /api/todos (data)
+    APIClient->>Backend: HTTP Request
+    Backend-->>APIClient: 201 Created + 데이터
+    APIClient-->>Store: 응답 반환
+    Store->>Store: 상태 업데이트
+    Store-->>Page: 업데이트된 할일 목록
     Page-->>User: 할일 목록 갱신
 ```
 
@@ -411,20 +424,21 @@ sequenceDiagram
     participant User as 사용자
     participant UI as 로그인 페이지
     participant AuthStore as authStore
-    participant AuthSvc as authService
-    participant API as authController
+    participant APIClient as api.js
+    participant Backend as authController
     participant DB as PostgreSQL
 
     User->>UI: 아이디/비밀번호 입력
     UI->>AuthStore: login(credentials)
-    AuthStore->>AuthSvc: login(credentials)
-    AuthSvc->>API: POST /api/auth/login
-    API->>DB: SELECT * FROM users
-    DB-->>API: 사용자 정보
-    API->>API: 비밀번호 검증 (bcrypt)
-    API->>API: JWT 토큰 생성
-    API-->>AuthSvc: { accessToken, user }
-    AuthSvc-->>AuthStore: 토큰 저장
+    AuthStore->>APIClient: POST /api/auth/login (credentials)
+    APIClient->>Backend: HTTP Request
+    Backend->>DB: SELECT * FROM users
+    DB-->>Backend: 사용자 정보
+    Backend->>Backend: 비밀번호 검증 (bcrypt)
+    Backend->>Backend: JWT 토큰 생성
+    Backend-->>APIClient: { accessToken, user }
+    APIClient-->>AuthStore: 응답 반환
+    AuthStore->>AuthStore: 토큰 저장 및 사용자 정보 업데이트
     AuthStore-->>UI: 로그인 성공
     UI-->>User: 메인 페이지 이동
 ```
@@ -454,26 +468,7 @@ sequenceDiagram
     UI-->>User: 할일 목록 갱신
 ```
 
-### 5.3 외부 API 통합 (날씨 정보)
 
-```mermaid
-sequenceDiagram
-    participant UI as TodoListPage
-    participant WeatherSvc as 백엔드 weatherService
-    participant API as OpenWeatherMap API
-
-    UI->>WeatherSvc: GET /api/weather
-    WeatherSvc->>API: GET /current?city=Seoul
-    alt API 성공
-        API-->>WeatherSvc: 날씨 데이터
-        WeatherSvc-->>UI: 200 + JSON
-        UI->>UI: 날씨 정보 표시
-    else API 실패
-        API-->>WeatherSvc: 503 Service Unavailable
-        WeatherSvc-->>UI: 503 + 에러 메시지
-        UI->>UI: "날씨 정보를 가져올 수 없습니다" 표시
-    end
-```
 
 ---
 

@@ -10,14 +10,14 @@ const {
   permanentDelete
 } = require('../controllers/todoController')
 const { authMiddleware } = require('../middlewares/authMiddleware')
-const { todoValidation } = require('../middlewares/validationMiddleware')
+const { todoValidation, updateTodoValidation } = require('../middlewares/validationMiddleware')
 
 router.use(authMiddleware)
 
 router.get('/', getAllTodos)
 router.post('/', todoValidation, createTodo)
 router.get('/:id', getSingleTodo)
-router.put('/:id', todoValidation, updateTodo)
+router.put('/:id', updateTodoValidation, updateTodo)
 router.delete('/:id', deleteTodo)
 router.patch('/:id/restore', restoreTodo)
 router.delete('/:id/permanent', permanentDelete)

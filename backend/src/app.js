@@ -9,6 +9,10 @@ const errorMiddleware = require('./middlewares/errorMiddleware')
 
 const app = express()
 
+const swaggerUi = require('swagger-ui-express')
+const swaggerDocument = require('./swagger.json')
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+
 const limiter = rateLimit({
   windowMs: 1 * 60 * 1000,
   max: 100,

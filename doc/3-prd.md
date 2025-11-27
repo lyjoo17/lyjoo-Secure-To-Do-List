@@ -1,4 +1,4 @@
-# WHS-TodoList Product Requirements Document (PRD)
+# lyjoo-TodoList Product Requirements Document (PRD)
 
 **버전**: 1.0
 **작성일**: 2025-11-25

@@ -1,4 +1,4 @@
-# WHS-TodoList 프로젝트 구조 설계 원칙
+# lyjoo-TodoList 프로젝트 구조 설계 원칙
 
 **버전**: 1.0
 **작성일**: 2025-11-25
@@ -604,52 +604,52 @@ frontend/
 │   └── index.html
 ├── src/
 │   ├── components/             # 재사용 가능한 컴포넌트
+│   │   ├── auth/               # 인증 관련 컴포넌트 (ProtectedRoute, PublicOnlyRoute)
+│   │   │   ├── ProtectedRoute.jsx
+│   │   │   └── PublicOnlyRoute.jsx
 │   │   ├── common/             # 공통 컴포넌트
-│   │   │   ├── Button.jsx      # 버튼 컴포넌트
-│   │   │   ├── Input.jsx       # 입력 필드
-│   │   │   ├── Modal.jsx       # 모달
-│   │   │   ├── Loading.jsx     # 로딩 스피너
-│   │   │   └── Fireworks.jsx   # 폭죽 효과 (canvas-confetti)
-│   │   ├── todo/               # 할일 관련 컴포넌트
-│   │   │   ├── TodoCard.jsx    # 할일 카드
-│   │   │   ├── TodoList.jsx    # 할일 목록
-│   │   │   ├── TodoForm.jsx    # 할일 추가/수정 폼
-│   │   │   └── TodoFilter.jsx  # 필터 컴포넌트
-│   │   ├── holiday/            # 국경일 관련 컴포넌트
-│   │   │   └── HolidayCard.jsx
-│   │   └── layout/             # 레이아웃 컴포넌트
-│   │       ├── Header.jsx      # 헤더
-│   │       ├── Sidebar.jsx     # 사이드바 (선택)
-│   │       └── MainLayout.jsx  # 메인 레이아웃
+│   │   │   ├── Badge.jsx
+│   │   │   ├── Button.jsx
+│   │   │   ├── Card.jsx
+│   │   │   ├── ConfirmDialog.jsx
+│   │   │   ├── Input.jsx
+│   │   │   ├── Modal.jsx
+│   │   │   ├── Skeleton.jsx
+│   │   │   ├── Spinner.jsx
+│   │   │   └── Toast.jsx
+│   │   ├── layout/             # 레이아웃 컴포넌트
+│   │   │   ├── BottomNav.jsx
+│   │   │   ├── Header.jsx
+│   │   │   ├── MainLayout.jsx
+│   │   │   └── Sidebar.jsx
+│   │   └── todo/               # 할일 관련 컴포넌트
+│   │       ├── TodoCard.jsx
+│   │       ├── TodoFormModal.jsx
+│   │       └── TodoSkeleton.jsx
 │   ├── pages/                  # 페이지 컴포넌트
-│   │   ├── LoginPage.jsx       # 로그인 페이지
-│   │   ├── RegisterPage.jsx    # 회원가입 페이지
-│   │   ├── TodoListPage.jsx    # 할일 목록 (메인)
-│   │   ├── TrashPage.jsx       # 휴지통 페이지
-│   │   ├── HolidayPage.jsx     # 국경일 페이지
-│   │   └── ProfilePage.jsx     # 프로필 페이지
-│   ├── stores/                 # Zustand 스토어
+│   │   ├── auth/               # 인증 관련 페이지
+│   │   │   ├── LoginPage.jsx
+│   │   │   └── RegisterPage.jsx
+│   │   ├── holiday/            # 국경일 페이지
+│   │   │   └── HolidayPage.jsx
+│   │   ├── profile/            # 프로필 페이지
+│   │   │   └── ProfilePage.jsx
+│   │   ├── todo/               # 할일 관련 페이지
+│   │   │   ├── TodoListPage.jsx
+│   │   │   └── TrashPage.jsx
+│   │   └── NotFoundPage.jsx
+│   ├── store/                  # Zustand 스토어
 │   │   ├── todoStore.js        # 할일 상태 관리
 │   │   ├── authStore.js        # 인증 상태 관리
 │   │   ├── holidayStore.js     # 국경일 상태 관리
 │   │   └── uiStore.js          # UI 상태 (모달, 토스트 등)
-│   ├── services/               # API 서비스
-│   │   ├── api.js              # Axios 인스턴스 설정
-│   │   ├── todoService.js      # 할일 API 호출
-│   │   ├── authService.js      # 인증 API 호출
-│   │   ├── holidayService.js   # 국경일 API 호출
-│   │   └── userService.js      # 사용자 API 호출
+│   ├── services/               # API 서비스 (Axios 인스턴스 및 상수)
+│   │   ├── api.js              # Axios 인스턴스 설정 및 인터셉터
+│   │   └── constants.js        # API 엔드포인트 및 기타 상수
 │   ├── hooks/                  # 커스텀 훅
-│   │   ├── useTodos.js         # 할일 로직 훅
-│   │   ├── useAuth.js          # 인증 로직 훅
-│   │   ├── useDebounce.js      # Debounce 훅
-│   │   ├── useLocalStorage.js  # LocalStorage 훅
-│   │   └── useMediaQuery.js    # 반응형 미디어 쿼리 훅
-│   ├── utils/                  # 유틸리티 함수
-│   │   ├── dateFormatter.js    # 날짜 포맷팅
-│   │   ├── validator.js        # 검증 함수
-│   │   ├── tokenManager.js     # JWT 토큰 관리
-│   │   └── errorHandler.js     # 에러 처리
+│   │   ├── useMediaQuery.js    # 반응형 미디어 쿼리 훅
+│   │   └── useTheme.js         # 테마 관리 훅
+│   ├── utils/                  # 유틸리티 함수 (현재 비어 있음)
 │   ├── types/                  # TypeScript 타입 (선택)
 │   │   ├── todo.ts             # Todo 타입
 │   │   └── user.ts             # User 타입
@@ -663,8 +663,7 @@ frontend/
 │   ├── styles/                 # 글로벌 스타일 (선택)
 │   │   └── global.css
 │   ├── App.jsx                 # 루트 컴포넌트
-│   ├── main.jsx                # 엔트리 포인트
-│   └── routes.jsx              # 라우트 설정
+│   └── main.jsx                # 엔트리 포인트
 ├── .env                        # 환경 변수 (Git 제외)
 ├── .env.example                # 환경 변수 예시
 ├── .eslintrc.json              # ESLint 설정
@@ -681,10 +680,10 @@ frontend/
 |------|------|------|
 | `components/` | 재사용 가능한 UI 컴포넌트 | `Button.jsx`, `TodoCard.jsx` |
 | `pages/` | 라우트별 페이지 컴포넌트 | `LoginPage.jsx`, `TodoListPage.jsx` |
-| `stores/` | Zustand 스토어 (전역 상태) | `todoStore.js`, `authStore.js` |
-| `services/` | API 통신 레이어 | `todoService.js` |
-| `hooks/` | 커스텀 React 훅 | `useTodos.js`, `useAuth.js` |
-| `utils/` | 순수 유틸리티 함수 | `dateFormatter.js`, `validator.js` |
+| `store/` | Zustand 스토어 (전역 상태) | `todoStore.js`, `authStore.js`, `holidayStore.js`, `uiStore.js` |
+| `services/` | API 통신 관련 (Axios 인스턴스 및 상수) | `api.js`, `constants.js` |
+| `hooks/` | 커스텀 React 훅 | `useMediaQuery.js`, `useTheme.js` |
+| `utils/` | 순수 유틸리티 함수 (현재 비어 있음) | - |
 | `constants/` | 상수 정의 | `API_ENDPOINTS`, `TODO_STATUS` |
 | `assets/` | 이미지, 아이콘 등 정적 자산 | `logo.png` |
 

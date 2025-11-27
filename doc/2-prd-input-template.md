@@ -1,4 +1,4 @@
-# WHS-TodoList PRD 정보 입력 템플릿
+# lyjoo-TodoList PRD 정보 입력 템플릿
 
 **버전**: 1.0
 **작성일**: 2025-11-25

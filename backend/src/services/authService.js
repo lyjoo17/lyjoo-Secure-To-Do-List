@@ -28,7 +28,7 @@ const register = async (userData) => {
 
   return {
     user: userWithoutPassword,
-    token
+    accessToken: token
   }
 }
 
@@ -59,7 +59,7 @@ const login = async (email, password) => {
 
   return {
     user: userWithoutPassword,
-    token
+    accessToken: token
   }
 }
 

@@ -1,4 +1,4 @@
-## 🏗️ WHS-TodoList 와이어프레임 (v1.0)
+## 🏗️ lyjoo-TodoList 와이어프레임 (v1.0)
 
 ### 1. 공통 레이아웃 (Main Layout)
 모든 로그인 후 페이지에 적용되는 기본 구조입니다.

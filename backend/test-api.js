@@ -21,7 +21,7 @@ const testAPI = async () => {
     try {
       const register = await axios.post(`${BASE_URL}/auth/register`, registerData)
       console.log('✓ 회원가입 성공:', register.data.message)
-      authToken = register.data.data.token
+      authToken = register.data.data.accessToken
     } catch (error) {
       if (error.response?.status === 409) {
         console.log('✓ 이미 존재하는 사용자 (로그인 시도)')
@@ -29,7 +29,7 @@ const testAPI = async () => {
           email: registerData.email,
           password: registerData.password
         })
-        authToken = login.data.data.token
+        authToken = login.data.data.accessToken
         console.log('✓ 로그인 성공')
       } else {
         throw error

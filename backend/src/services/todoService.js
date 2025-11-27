@@ -39,10 +39,15 @@ const createNewTodo = async (userId, todoData) => {
     }
   }
 
-  return await createTodo({
+  // Convert date strings to Date objects for Prisma
+  const formattedData = {
     ...todoData,
+    startDate: todoData.startDate ? new Date(todoData.startDate) : undefined,
+    dueDate: todoData.dueDate ? new Date(todoData.dueDate) : undefined,
     userId
-  })
+  }
+
+  return await createTodo(formattedData)
 }
 
 const updateExistingTodo = async (todoId, userId, todoData) => {
@@ -56,7 +61,23 @@ const updateExistingTodo = async (todoId, userId, todoData) => {
     }
   }
 
-  return await updateTodo(todoId, todoData)
+  // Convert date strings to Date objects for Prisma
+  const formattedData = {
+    ...todoData,
+    startDate: todoData.startDate ? new Date(todoData.startDate) : undefined,
+    dueDate: todoData.dueDate ? new Date(todoData.dueDate) : undefined
+  }
+
+  // Remove undefined fields to avoid overwriting with null if not intended
+  if (!formattedData.startDate) delete formattedData.startDate
+  if (!formattedData.dueDate) delete formattedData.dueDate
+
+  // Update status based on isCompleted if provided
+  if (formattedData.isCompleted !== undefined) {
+    formattedData.status = formattedData.isCompleted ? 'COMPLETED' : 'ACTIVE'
+  }
+
+  return await updateTodo(todoId, formattedData)
 }
 
 const deleteTodoSoft = async (todoId, userId) => {

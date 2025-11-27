@@ -59,8 +59,31 @@ const todoValidation = [
   validate
 ]
 
+const updateTodoValidation = [
+  body('title')
+    .optional()
+    .trim()
+    .notEmpty()
+    .withMessage('Title cannot be empty')
+    .isLength({ max: 255 })
+    .withMessage('Title must not exceed 255 characters'),
+  body('content')
+    .optional()
+    .trim(),
+  body('startDate')
+    .optional()
+    .isISO8601()
+    .withMessage('Start date must be a valid date'),
+  body('dueDate')
+    .optional()
+    .isISO8601()
+    .withMessage('Due date must be a valid date'),
+  validate
+]
+
 module.exports = {
   registerValidation,
   loginValidation,
-  todoValidation
+  todoValidation,
+  updateTodoValidation
 }

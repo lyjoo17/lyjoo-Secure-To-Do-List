@@ -1,4 +1,4 @@
-# WHS-TodoList 데이터 모델 (ERD)
+# lyjoo-TodoList 데이터 모델 (ERD)
 
 **버전**: 1.0
 **작성일**: 2025-11-26
@@ -320,7 +320,7 @@ ORDER BY date ASC;
 
 ## 5. Prisma 스키마
 
-WHS-TodoList의 완전한 Prisma 스키마 정의입니다.
+lyjoo-TodoList의 완전한 Prisma 스키마 정의입니다.
 
 ```prisma
 // This is your Prisma schema file,
