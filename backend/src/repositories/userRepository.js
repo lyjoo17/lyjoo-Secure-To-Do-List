@@ -8,7 +8,15 @@ const createUser = async (userData) => {
     RETURNING user_id, username, email, role, created_at, updated_at
   `
   const result = await db.query(query, [username, email, password, role])
-  return result.rows[0]
+  const row = result.rows[0]
+  return {
+    userId: row.user_id,
+    username: row.username,
+    email: row.email,
+    role: row.role,
+    createdAt: row.created_at,
+    updatedAt: row.updated_at
+  }
 }
 
 const findUserByEmail = async (email) => {
@@ -18,7 +26,18 @@ const findUserByEmail = async (email) => {
     WHERE email = $1
   `
   const result = await db.query(query, [email])
-  return result.rows[0] || null
+  if (!result.rows[0]) return null
+
+  const row = result.rows[0]
+  return {
+    userId: row.user_id,
+    username: row.username,
+    email: row.email,
+    password: row.password,
+    role: row.role,
+    createdAt: row.created_at,
+    updatedAt: row.updated_at
+  }
 }
 
 const findUserById = async (userId) => {
@@ -28,7 +47,17 @@ const findUserById = async (userId) => {
     WHERE user_id = $1
   `
   const result = await db.query(query, [userId])
-  return result.rows[0] || null
+  if (!result.rows[0]) return null
+
+  const row = result.rows[0]
+  return {
+    userId: row.user_id,
+    username: row.username,
+    email: row.email,
+    role: row.role,
+    createdAt: row.created_at,
+    updatedAt: row.updated_at
+  }
 }
 
 const updateUser = async (userId, userData) => {
@@ -65,7 +94,15 @@ const updateUser = async (userId, userData) => {
     RETURNING user_id, username, email, role, created_at, updated_at
   `
   const result = await db.query(query, values)
-  return result.rows[0]
+  const row = result.rows[0]
+  return {
+    userId: row.user_id,
+    username: row.username,
+    email: row.email,
+    role: row.role,
+    createdAt: row.created_at,
+    updatedAt: row.updated_at
+  }
 }
 
 module.exports = {
