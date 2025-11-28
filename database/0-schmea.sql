@@ -5,6 +5,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 -- Note: Enum values are case-sensitive in PostgreSQL. Matching Prisma Schema values.
 CREATE TYPE role_enum AS ENUM ('USER', 'ADMIN');
 CREATE TYPE todo_status_enum AS ENUM ('ACTIVE', 'COMPLETED', 'DELETED');
+CREATE TYPE priority_enum AS ENUM ('LOW', 'MEDIUM', 'HIGH');
 
 -- Create Update Timestamp Function
 CREATE OR REPLACE FUNCTION update_updated_at_column()
@@ -48,14 +49,15 @@ CREATE TABLE todos (
     start_date DATE,
     due_date DATE,
     status todo_status_enum NOT NULL DEFAULT 'ACTIVE',
+    priority priority_enum NOT NULL DEFAULT 'MEDIUM',
     is_completed BOOLEAN NOT NULL DEFAULT FALSE,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
     deleted_at TIMESTAMP,
-    
+
     -- Foreign Key Constraint
     CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
-    
+
     -- Check Constraint
     CONSTRAINT check_due_date CHECK (due_date >= start_date)
 );
@@ -64,6 +66,7 @@ CREATE TABLE todos (
 CREATE INDEX idx_todos_user_status ON todos(user_id, status);
 CREATE INDEX idx_todos_due_date ON todos(due_date);
 CREATE INDEX idx_todos_deleted_at ON todos(deleted_at);
+CREATE INDEX idx_todos_priority ON todos(priority);
 
 -- Trigger for Todos updated_at
 CREATE TRIGGER update_todos_updated_at

@@ -49,6 +49,7 @@ erDiagram
         date startDate "시작일"
         date dueDate "만료일"
         enum status "할일 상태 (active, completed, deleted)"
+        enum priority "우선순위 (low, medium, high)"
         boolean isCompleted "완료 여부"
         timestamp createdAt "생성일시"
         timestamp updatedAt "최종 수정일시"
@@ -120,6 +121,7 @@ lyjoo-secure-to-do-list 시스템은 3개의 핵심 엔티티로 구성됩니다
 | `startDate` | DATE | NULL | null | 할일 시작일 (선택) |
 | `dueDate` | DATE | NULL, CHECK(dueDate >= startDate) | null | 할일 만료일 (선택, 시작일 이후) |
 | `status` | ENUM('ACTIVE', 'COMPLETED', 'DELETED') | NOT NULL | 'ACTIVE' | 할일 상태 |
+| `priority` | ENUM('LOW', 'MEDIUM', 'HIGH') | NOT NULL | 'MEDIUM' | 할일 우선순위 |
 | `isCompleted` | BOOLEAN | NOT NULL | false | 완료 여부 플래그 |
 | `createdAt` | TIMESTAMP | NOT NULL | now() | 할일 생성일시 |
 | `updatedAt` | TIMESTAMP | NOT NULL | now() | 최종 수정일시 (자동 갱신) |
@@ -256,6 +258,7 @@ SELECT * FROM User WHERE role = 'admin'; -- INDEX 활용
 | **COMPOSITE INDEX** | `(userId, status)` | 사용자별 상태별 할일 조회 (가장 빈번) | 메인 화면 로딩 속도 향상 |
 | **INDEX** | `dueDate` | 만료일 기준 정렬 및 필터링 | 날짜별 정렬 성능 향상 |
 | **INDEX** | `deletedAt` | 휴지통 조회 및 소프트 삭제 관리 | 휴지통 화면 성능 향상 |
+| **INDEX** | `priority` | 우선순위 기준 필터링 및 정렬 | 우선순위별 조회 성능 향상 |
 
 **주요 쿼리 패턴**:
 ```sql
@@ -366,6 +369,7 @@ model Todo {
   startDate   DateTime?
   dueDate     DateTime?
   status      TodoStatus  @default(ACTIVE)
+  priority    Priority    @default(MEDIUM)
   isCompleted Boolean     @default(false)
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
@@ -378,6 +382,7 @@ model Todo {
   @@index([userId, status])
   @@index([dueDate])
   @@index([deletedAt])
+  @@index([priority])
   @@map("todos")
 }
 
@@ -417,6 +422,15 @@ enum TodoStatus {
   DELETED    // 삭제됨 (휴지통)
 
   @@map("todo_status")
+}
+
+// 할일 우선순위
+enum Priority {
+  LOW     // 낮음
+  MEDIUM  // 보통
+  HIGH    // 높음
+
+  @@map("priority")
 }
 ```
 
@@ -904,6 +918,7 @@ const [deletedTodo, logEntry] = await prisma.$transaction([
 |------|------|----------|--------|
 | 1.0 | 2025-11-26 | ERD 문서 초안 작성 | Claude |
 | 1.1 | 2025-11-26 | DB 스키마 동기화 (Enum 대문자 변경, CHECK 제약조건 확인) | Gemini |
+| 1.2 | 2025-11-28 | Todo 엔티티에 priority 필드 추가, Priority Enum 추가, 인덱스 추가 | Claude |
 
 ---
 
