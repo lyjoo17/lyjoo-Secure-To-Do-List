@@ -10,21 +10,16 @@
     "test:db": "node src/tests/database.test.js",
     "test:helpers": "node test-db-helpers.js",
     "test:api": "node test-api.js",
-    "build": "prisma generate && prisma migrate deploy"
-  },
-  "prisma": {
-    "seed": "node prisma/seed.js"
+    "build": "echo 'Build completed'"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "nodemon": "^3.1.11",
-    "pg": "^5.22.0"
+    "nodemon": "^3.1.11"
   },
   "dependencies": {
-    "@prisma/client": "^5.22.0",
     "axios": "^1.7.7",
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
@@ -34,6 +29,7 @@
     "express-validator": "^7.3.1",
     "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.2",
+    "pg": "^8.16.3",
     "swagger-ui-express": "^5.0.1"
   }
 }
