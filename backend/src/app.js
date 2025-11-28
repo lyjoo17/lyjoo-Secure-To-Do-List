@@ -9,14 +9,14 @@ const errorMiddleware = require('./middlewares/errorMiddleware')
 
 const app = express()
 
-app.set('trust proxy', 1)
+app.set('trust proxy', true)
 
 const swaggerUi = require('swagger-ui-express')
 const swaggerDocument = require('./swagger.json')
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 const limiter = rateLimit({
-  windowMs: 1 * 60 * 1000,
+  windowMs: 15 * 60 * 1000,
   max: 100,
   message: 'Too many requests from this IP, please try again later.',
   standardHeaders: true,
@@ -24,7 +24,7 @@ const limiter = rateLimit({
 })
 
 const authLimiter = rateLimit({
-  windowMs: 1 * 60 * 1000,
+  windowMs: 15 * 60 * 1000,
   max: 10,
   message: 'Too many authentication attempts, please try again later.',
   standardHeaders: true,
