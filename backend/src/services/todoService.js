@@ -39,7 +39,6 @@ const createNewTodo = async (userId, todoData) => {
     }
   }
 
-  // Convert date strings to Date objects for Prisma
   const formattedData = {
     ...todoData,
     startDate: todoData.startDate ? new Date(todoData.startDate) : undefined,
@@ -61,7 +60,6 @@ const updateExistingTodo = async (todoId, userId, todoData) => {
     }
   }
 
-  // Convert date strings to Date objects for Prisma
   const formattedData = {
     ...todoData,
     startDate: todoData.startDate ? new Date(todoData.startDate) : undefined,
